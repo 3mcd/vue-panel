@@ -16,7 +16,7 @@
     "node-libs-browser": "^0.5.2",
     "style-loader": "^0.12.3",
     "stylus-loader": "^1.2.0",
-    "vue": "^0.12.0",
+    "vue": "^0.12.0-rc2",
     "vue-multi-loader": "0.0.5",
     "webpack": "^1.9.10"
   }
