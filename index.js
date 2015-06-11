@@ -46,9 +46,9 @@
 
 	module.exports = {
 	  'actions': __webpack_require__(1),
-	  'panel-bar': __webpack_require__(12),
-	  'panel-content': __webpack_require__(18),
-	  'panel': __webpack_require__(23)
+	  'panel-bar': __webpack_require__(8),
+	  'panel-content': __webpack_require__(14),
+	  'panel': __webpack_require__(19)
 	};
 
 /***/ },
@@ -56,8 +56,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(2)
-	module.exports = __webpack_require__(10)
-	module.exports.template = __webpack_require__(11)
+	module.exports = __webpack_require__(6)
+	module.exports.template = __webpack_require__(7)
 
 /***/ },
 /* 2 */
@@ -66,10 +66,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(7);
+	var content = __webpack_require__(3);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -86,18 +86,14 @@
 	}
 
 /***/ },
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(4)();
 	exports.push([module.id, "ns-actions {\n  display: flex;\n}\n", ""]);
 
 /***/ },
-/* 8 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -153,7 +149,7 @@
 
 
 /***/ },
-/* 9 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -378,7 +374,7 @@
 
 
 /***/ },
-/* 10 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -388,30 +384,30 @@
 
 
 /***/ },
-/* 11 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <ns-actions v-style=\"flex-direction: direction\">\r\n    <content></content>\r\n  </ns-actions>\r\n\n";
 
 /***/ },
-/* 12 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(13)
-	module.exports = __webpack_require__(15)
-	module.exports.template = __webpack_require__(17)
+	__webpack_require__(9)
+	module.exports = __webpack_require__(11)
+	module.exports.template = __webpack_require__(13)
 
 /***/ },
-/* 13 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(14);
+	var content = __webpack_require__(10);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -428,14 +424,14 @@
 	}
 
 /***/ },
-/* 14 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(4)();
 	exports.push([module.id, "ns-panel-bar {\n  display: flex;\n}\n", ""]);
 
 /***/ },
-/* 15 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -446,12 +442,12 @@
 	  },
 	  props: ['direction', 'size'],
 	  replace: true,
-	  mixins: [__webpack_require__(16)]
+	  mixins: [__webpack_require__(12)]
 	};
 
 
 /***/ },
-/* 16 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -488,30 +484,30 @@
 	};
 
 /***/ },
-/* 17 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <ns-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size\">\r\n    <content></content>\r\n  </ns-panel-bar>\r\n\n";
 
 /***/ },
-/* 18 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(19)
-	module.exports = __webpack_require__(21)
-	module.exports.template = __webpack_require__(22)
+	__webpack_require__(15)
+	module.exports = __webpack_require__(17)
+	module.exports.template = __webpack_require__(18)
 
 /***/ },
-/* 19 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(20);
+	var content = __webpack_require__(16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -528,14 +524,14 @@
 	}
 
 /***/ },
-/* 20 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(4)();
 	exports.push([module.id, "ns-panel-content {\n  flex: 1;\n}\n", ""]);
 
 /***/ },
-/* 21 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -544,13 +540,13 @@
 
 
 /***/ },
-/* 22 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <ns-panel-content>\r\n    <content></content>\r\n  </ns-panel-content>\r\n\n";
 
 /***/ },
-/* 23 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(24)
@@ -558,6 +554,10 @@
 	module.exports.template = __webpack_require__(29)
 
 /***/ },
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */,
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -567,7 +567,7 @@
 	var content = __webpack_require__(25);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(9)(content, {});
+	var update = __webpack_require__(5)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -587,7 +587,7 @@
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(8)();
+	exports = module.exports = __webpack_require__(4)();
 	exports.push([module.id, "ns-panel {\n  display: flex;\n}\n", ""]);
 
 /***/ },

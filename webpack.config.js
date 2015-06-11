@@ -1,6 +1,6 @@
 // webpack.config.js
 module.exports = {
-  entry: "./main.js",
+  entry: "./src/main.js",
   output: {
     filename: "index.js"
   },
