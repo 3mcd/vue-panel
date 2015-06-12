@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define(factory);
+	else if(typeof exports === 'object')
+		exports["VuePanel"] = factory();
+	else
+		root["VuePanel"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -84,13 +94,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-
 	  ready: function () {
 	    for (var i = this._transCpnts.length - 1; i >= 0; i--) {
 	      this.bindData(this._transCpnts[i]);
 	    }
 	  },
-
 	  methods: {
 	    bindData: function (cpnt) {
 	      var _this = this;
@@ -113,7 +121,6 @@
 	      }(props.length - 1));
 	    }
 	  }
-
 	};
 
 /***/ },
@@ -210,4 +217,6 @@
 	module.exports = "\r\n  <ns-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </ns-panel>\r\n\n";
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;
