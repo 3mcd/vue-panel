@@ -63,7 +63,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	  install: function (Vue) {
 	    for (var prop in components) {
-	      Vue.component(prop, panels[prop]);
+	      Vue.component(prop, components[prop]);
 	    }
 	  }
 	};
