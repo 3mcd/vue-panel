@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define(factory);
+	else if(typeof exports === 'object')
+		exports["VuePanel"] = factory();
+	else
+		root["VuePanel"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -48,7 +58,7 @@
 	  'actions': __webpack_require__(1),
 	  'panel-bar': __webpack_require__(8),
 	  'panel-content': __webpack_require__(14),
-	  'panel': __webpack_require__(19)
+	  'panel': __webpack_require__(23)
 	};
 
 /***/ },
@@ -493,18 +503,22 @@
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(15)
-	module.exports = __webpack_require__(17)
-	module.exports.template = __webpack_require__(18)
+	__webpack_require__(19)
+	module.exports = __webpack_require__(21)
+	module.exports.template = __webpack_require__(22)
 
 /***/ },
-/* 15 */
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(16);
+	var content = __webpack_require__(20);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(5)(content, {});
@@ -524,14 +538,14 @@
 	}
 
 /***/ },
-/* 16 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(4)();
 	exports.push([module.id, "ns-panel-content {\n  flex: 1;\n}\n", ""]);
 
 /***/ },
-/* 17 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -540,13 +554,13 @@
 
 
 /***/ },
-/* 18 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <ns-panel-content>\r\n    <content></content>\r\n  </ns-panel-content>\r\n\n";
 
 /***/ },
-/* 19 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(24)
@@ -554,10 +568,6 @@
 	module.exports.template = __webpack_require__(29)
 
 /***/ },
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */,
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12903,4 +12913,6 @@
 	module.exports = "\r\n  <ns-panel v-style=\"\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </ns-panel>\r\n\n";
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;
