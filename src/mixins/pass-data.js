@@ -1,11 +1,9 @@
 module.exports = {
-
   ready: function () {
     for (var i = this._transCpnts.length - 1; i >= 0; i--) {
       this.bindData(this._transCpnts[i]);
     }
   },
-
   methods: {
     bindData: function (cpnt) {
       var _this = this;
@@ -28,5 +26,4 @@ module.exports = {
       }(props.length - 1));
     }
   }
-
 };
