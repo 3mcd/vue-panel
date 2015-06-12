@@ -54,10 +54,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var components = {
+	  'v-panel-bar': __webpack_require__(1),
+	  'v-panel-content': __webpack_require__(8),
+	  'v-panel': __webpack_require__(11)
+	};
+
 	module.exports = {
-	  'panel-bar': __webpack_require__(1),
-	  'panel-content': __webpack_require__(8),
-	  'panel': __webpack_require__(11)
+	  install: function (Vue) {
+	    for (var prop in components) {
+	      Vue.component(prop, panels[prop]);
+	    }
+	  }
 	};
 
 /***/ },
@@ -142,8 +150,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	
 	  module.exports = {
-	    data: {
-	      flex: 1
+	    data: function () {
+	      return {
+	        flex: 1
+	      };
 	    },
 	    replace: true
 	  };
