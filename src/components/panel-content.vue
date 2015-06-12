@@ -6,8 +6,10 @@
 
 <script>
   module.exports = {
-    data: {
-      flex: 1
+    data: function () {
+      return {
+        flex: 1
+      };
     },
     replace: true
   };
