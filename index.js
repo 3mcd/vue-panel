@@ -86,7 +86,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./actions.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./actions.vue");
+				var newContent = __webpack_require__("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./actions.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -424,7 +424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-bar.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-bar.vue");
+				var newContent = __webpack_require__("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-bar.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -528,7 +528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-content.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-content.vue");
+				var newContent = __webpack_require__("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel-content.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -584,7 +584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
 			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel.vue");
+				var newContent = __webpack_require__("!!./../../node_modules/css-loader/index.js!./../../node_modules/stylus-loader/index.js!./../../node_modules/vue-multi-loader/selector.js?style/stylus!./panel.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
