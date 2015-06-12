@@ -1,7 +1,7 @@
 <template>
-  <ns-panel-content v-style="flex: flex">
+  <v-panel-content v-style="flex: flex">
     <content></content>
-  </ns-panel-content>
+  </v-panel-content>
 </template>
 
 <script>

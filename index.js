@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var components = {
 	  'v-panel-bar': __webpack_require__(1),
-	  'v-panel-content': __webpack_require__(8),
+	  'v-panel-content': __webpack_require__(5),
 	  'v-panel': __webpack_require__(11)
 	};
 
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(2)
-	module.exports.template = __webpack_require__(7)
+	module.exports.template = __webpack_require__(4)
 
 /***/ },
 /* 2 */
@@ -89,16 +89,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    props: ['direction', 'size'],
 	    replace: true,
-	    mixins: [__webpack_require__(6)]
+	    mixins: [__webpack_require__(3)]
 	  };
 
 
 
 /***/ },
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -132,20 +129,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <ns-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    display: display\">\r\n    <content></content>\r\n  </ns-panel-bar>\r\n\n";
+	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(9)
+	module.exports = __webpack_require__(7)
 	module.exports.template = __webpack_require__(10)
 
 /***/ },
-/* 9 */
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -161,10 +159,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 8 */,
+/* 9 */,
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <ns-panel-content v-style=\"flex: flex\">\r\n    <content></content>\r\n  </ns-panel-content>\r\n\n";
+	module.exports = "\r\n  <v-panel-content v-style=\"flex: flex\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
 
 /***/ },
 /* 11 */
@@ -224,7 +224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <ns-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </ns-panel>\r\n\n";
+	module.exports = "\r\n  <v-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </v-panel>\r\n\n";
 
 /***/ }
 /******/ ])

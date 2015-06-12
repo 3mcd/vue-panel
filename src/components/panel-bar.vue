@@ -1,10 +1,10 @@
 <template>
-  <ns-panel-bar v-style="
+  <v-panel-bar v-style="
     flex-direction: direction,
     flex-basis: size,
     display: display">
     <content></content>
-  </ns-panel-bar>
+  </v-panel-bar>
 </template>
 
 <script>
