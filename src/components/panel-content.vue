@@ -1,15 +1,14 @@
-<style lang="stylus">
-  ns-panel-content
-    flex 1
-</style>
-
 <template>
-  <ns-panel-content>
+  <ns-panel-content v-style="flex: flex">
     <content></content>
   </ns-panel-content>
 </template>
 
-<script lang="coffee">
-  module.exports =
+<script>
+  module.exports = {
+    data: {
+      flex: 1
+    },
     replace: true
+  };
 </script>

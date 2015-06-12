@@ -1,21 +1,22 @@
-<style lang="stylus">
-  ns-panel-bar
-    display flex
-</style>
-
 <template>
   <ns-panel-bar v-style="
     flex-direction: direction,
-    flex-basis: size">
+    flex-basis: size,
+    display: display">
     <content></content>
   </ns-panel-bar>
 </template>
 
-<script lang="coffee">
-  module.exports =
-    data: ->
-      size: '30px'
-    props: ['direction', 'size']
-    replace: true
+<script>
+  module.exports = {
+    data: function () {
+      return {
+        size: '30px',
+        display: 'flex'
+      };
+    },
+    props: ['direction', 'size'],
+    replace: true,
     mixins: [require('../mixins/pass-data')]
+  };
 </script>
