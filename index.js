@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var components = {
 	  'v-panel-bar': __webpack_require__(1),
-	  'v-panel-content': __webpack_require__(5),
+	  'v-panel-content': __webpack_require__(8),
 	  'v-panel': __webpack_require__(11)
 	};
 
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(2)
-	module.exports.template = __webpack_require__(4)
+	module.exports.template = __webpack_require__(7)
 
 /***/ },
 /* 2 */
@@ -88,14 +88,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    props: ['direction', 'size'],
+	    mixins: [__webpack_require__(6)],
 	    replace: true,
-	    mixins: [__webpack_require__(3)]
 	  };
 
 
 
 /***/ },
-/* 3 */
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -129,21 +132,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 4 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
 
 /***/ },
-/* 5 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(7)
+	module.exports = __webpack_require__(9)
 	module.exports.template = __webpack_require__(10)
 
 /***/ },
-/* 6 */,
-/* 7 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -159,8 +161,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 8 */,
-/* 9 */,
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -178,13 +178,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	  function resolveAlias(name, alias) {
-	    var arr = aliases[name];
-	    for (var i = arr.length - 1; i >= 0; i--) {
-	      if (alias == arr[i]) return name;
-	    }
-	  }
-
 	  var common = {
 	    'flex-start': ['start'],
 	    'flex-end': ['end']
@@ -201,18 +194,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data: function () {
 	      return {
 	        direction: 'row',
-	        display: 'flex'
+	        display: 'flex',
+	        alignItems: null,
+	        alignSelf: null,
+	        order: null,
+	        flex: null,
+	        grow: null,
+	        shrink: null,
+	        basis: null,
+	        justify: null
 	      };
 	    },
 	    computed: {
 	      parsedAlignSelf: function () {
-	        resolveAlias('align-self', this.$data.alignSelf);
+	        return this.resolveAlias('align-self', this.$data.alignSelf);
 	      },
 	      parsedAlignItems: function () {
-	        resolveAlias('align-items', this.$data.alignItems);
+	        return this.resolveAlias('align-items', this.$data.alignItems);
 	      },
 	      parsedJustifyContent: function () {
-	        resolveAlias('align-items', this.$data.justify);
+	        return this.resolveAlias('align-items', this.$data.justify);
+	      }
+	    },
+	    methods: {
+	      resolveAlias: function (name, value) {
+	        var arr = aliases[name];
+	        for (var i = arr.length - 1; i >= 0; i--) {
+	          if (value == arr[i]) return name;
+	        }
+	        return value;
 	      }
 	    },
 	    replace: true

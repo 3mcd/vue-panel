@@ -15,13 +15,6 @@
 </template>
 
 <script>
-  function resolveAlias(name, alias) {
-    var arr = aliases[name];
-    for (var i = arr.length - 1; i >= 0; i--) {
-      if (alias == arr[i]) return name;
-    }
-  }
-
   var common = {
     'flex-start': ['start'],
     'flex-end': ['end']
@@ -38,18 +31,35 @@
     data: function () {
       return {
         direction: 'row',
-        display: 'flex'
+        display: 'flex',
+        alignItems: null,
+        alignSelf: null,
+        order: null,
+        flex: null,
+        grow: null,
+        shrink: null,
+        basis: null,
+        justify: null
       };
     },
     computed: {
       parsedAlignSelf: function () {
-        resolveAlias('align-self', this.$data.alignSelf);
+        return this.resolveAlias('align-self', this.$data.alignSelf);
       },
       parsedAlignItems: function () {
-        resolveAlias('align-items', this.$data.alignItems);
+        return this.resolveAlias('align-items', this.$data.alignItems);
       },
       parsedJustifyContent: function () {
-        resolveAlias('align-items', this.$data.justify);
+        return this.resolveAlias('align-items', this.$data.justify);
+      }
+    },
+    methods: {
+      resolveAlias: function (name, value) {
+        var arr = aliases[name];
+        for (var i = arr.length - 1; i >= 0; i--) {
+          if (value == arr[i]) return name;
+        }
+        return value;
       }
     },
     replace: true

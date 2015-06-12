@@ -16,7 +16,7 @@
       };
     },
     props: ['direction', 'size'],
+    mixins: [require('../mixins/pass-data')],
     replace: true,
-    mixins: [require('../mixins/pass-data')]
   };
 </script>
