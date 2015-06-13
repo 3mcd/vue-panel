@@ -84,7 +84,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data: function () {
 	      return {
 	        size: '30px',
-	        display: 'flex'
+	        display: 'flex',
+	        shrink: 0
 	      };
 	    },
 	    props: ['direction', 'size'],
@@ -135,7 +136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
+	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    flex-shrink: shrink,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
 
 /***/ },
 /* 8 */
@@ -152,7 +153,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  module.exports = {
 	    data: function () {
 	      return {
-	        flex: 1
+	        flex: 1,
+	        grow: null,
+	        shrink: null,
+	        basis: null
 	      };
 	    },
 	    replace: true
@@ -164,7 +168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <v-panel-content v-style=\"flex: flex\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
+	module.exports = "\r\n  <v-panel-content v-style=\"\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
 
 /***/ },
 /* 11 */

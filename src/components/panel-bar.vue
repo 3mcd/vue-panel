@@ -2,8 +2,8 @@
   <v-panel-bar v-style="
     flex-direction: direction,
     flex-basis: size,
-    display: display,
-    flex-shrink: shrink">
+    flex-shrink: shrink,
+    display: display">
     <content></content>
   </v-panel-bar>
 </template>

@@ -6,9 +6,13 @@
   <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
 </head>
 <body>
-  <div id="stage">
-    <div id="main"></div>
+  <div id="panel">
+    <div class="render"></div>
   </div>
+  <div id="panel-bar">
+    <div class="render"></div>
+  </div>
+  <script type="text/javascript" src="util.js"></script>
   <script type="text/javascript" src="../index.js"></script>
   <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
   <script type="text/javascript" src="lib/jasmine.js"></script>
@@ -16,5 +20,6 @@
   <script type="text/javascript" src="lib/boot.js"></script>
   <script type="text/javascript" src="spec/plugin.js"></script>
   <script type="text/javascript" src="spec/panel.js"></script>
+  <script type="text/javascript" src="spec/panel-bar.js"></script>
 </body>
 </html>
