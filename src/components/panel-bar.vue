@@ -3,7 +3,7 @@
     flex-direction: direction,
     flex-basis: size,
     display: display,
-    shrink: shrink">
+    flex-shrink: shrink">
     <content></content>
   </v-panel-bar>
 </template>
