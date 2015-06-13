@@ -2,7 +2,8 @@
   <v-panel-bar v-style="
     flex-direction: direction,
     flex-basis: size,
-    display: display">
+    display: display,
+    shrink: shrink">
     <content></content>
   </v-panel-bar>
 </template>
@@ -12,7 +13,8 @@
     data: function () {
       return {
         size: '30px',
-        display: 'flex'
+        display: 'flex',
+        shrink: 0
       };
     },
     props: ['direction', 'size'],
