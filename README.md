@@ -12,13 +12,13 @@ To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or `Vu
 
 `<v-panel>` responds to a variety of Flexbox parameters and is useable as both a `display: flex` element and a flex-item:
 
-```
+```html
 <v-panel grow="1" shrink="0"></v-panel>
 ```
 
 `<v-panel>` will display any content inside of the element as it's own "transclusion" content:
 
-```
+```html
 <v-panel basis="200px">
     <h3>Foo</h3>
     <p>Lorem ipsum dolor sit amet...</p>
