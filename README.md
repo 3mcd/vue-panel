@@ -44,4 +44,4 @@ The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`
 
 ###Tests
 
-This plugin ships with Jasmine tests in the `test` folder. Open `test/index.html` to run them.
+This plugin ships with Jasmine tests in the `test` folder. `npm install` to pull down the Vue dependency, then open `test/index.html` to run the specs.
