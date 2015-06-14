@@ -58,6 +58,13 @@ describe('<v-panel/>', function () {
         .then(done);
     });
 
+    it('translates `$data.flex` to flex', function (done) {
+      _.nextTick()
+        .then(_.makeAwaitSet(cpnt, 'flex', '1 0 100%'))
+        .then(makeExpectStyleEqual('flex', '1 0 100%'))
+        .then(done);
+    });
+
     it('translates `$data.grow` to flex-grow', function (done) {
       cpnt.grow = 1;
       _.nextTick(makeExpectStyleEqual('flexGrow', '1')).then(done);
