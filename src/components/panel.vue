@@ -55,10 +55,16 @@
     },
     methods: {
       resolveAlias: function (name, value) {
-        var arr = aliases[name];
-        for (var i = arr.length - 1; i >= 0; i--) {
-          if (value == arr[i]) return name;
+        var spec = aliases[name],
+            arr, i;
+
+        for (var prop in spec) {
+          arr = spec[prop];
+          for (i = arr.length - 1; i >= 0; i--) {
+            if (value == arr[i]) return prop;
+          }
         }
+
         return value;
       }
     },

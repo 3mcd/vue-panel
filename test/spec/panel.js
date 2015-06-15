@@ -34,12 +34,22 @@ describe('<v-panel/>', function () {
       _.nextTick()
         .then(_.makeAwaitSet(cpnt, 'alignItems', 'flex-start'))
         .then(makeExpectStyleEqual('alignItems', 'flex-start'))
+        // Aliases
+        .then(_.makeAwaitSet(cpnt, 'alignItems', 'end'))
+        .then(makeExpectStyleEqual('alignItems', 'flex-end'))
+        .then(_.makeAwaitSet(cpnt, 'alignItems', 'start'))
+        .then(makeExpectStyleEqual('alignItems', 'flex-start'))
         .then(done);
     });
 
     it('translates `$data.align-self` (alignSelf) to align-self', function (done) {
       _.nextTick()
         .then(_.makeAwaitSet(cpnt, 'alignSelf', 'flex-start'))
+        .then(makeExpectStyleEqual('alignSelf', 'flex-start'))
+        // Aliases
+        .then(_.makeAwaitSet(cpnt, 'alignSelf', 'end'))
+        .then(makeExpectStyleEqual('alignSelf', 'flex-end'))
+        .then(_.makeAwaitSet(cpnt, 'alignSelf', 'start'))
         .then(makeExpectStyleEqual('alignSelf', 'flex-start'))
         .then(done);
     });
@@ -73,6 +83,11 @@ describe('<v-panel/>', function () {
     it('translates `$data.justify` to justify-content', function (done) {
       _.nextTick()
         .then(_.makeAwaitSet(cpnt, 'justify', 'flex-start'))
+        .then(makeExpectStyleEqual('justifyContent', 'flex-start'))
+        // Aliases
+        .then(_.makeAwaitSet(cpnt, 'justify', 'end'))
+        .then(makeExpectStyleEqual('justifyContent', 'flex-end'))
+        .then(_.makeAwaitSet(cpnt, 'justify', 'start'))
         .then(makeExpectStyleEqual('justifyContent', 'flex-start'))
         .then(done);
     });

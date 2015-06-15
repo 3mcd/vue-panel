@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var components = {
 	  'v-panel-bar': __webpack_require__(1),
-	  'v-panel-content': __webpack_require__(8),
+	  'v-panel-content': __webpack_require__(5),
 	  'v-panel': __webpack_require__(11)
 	};
 
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(2)
-	module.exports.template = __webpack_require__(7)
+	module.exports.template = __webpack_require__(4)
 
 /***/ },
 /* 2 */
@@ -89,17 +89,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    },
 	    props: ['direction', 'size'],
-	    mixins: [__webpack_require__(6)],
+	    mixins: [__webpack_require__(3)],
 	    replace: true,
 	  };
 
 
 
 /***/ },
-/* 3 */,
-/* 4 */,
-/* 5 */,
-/* 6 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -133,20 +130,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 7 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    flex-shrink: shrink,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(9)
+	module.exports = __webpack_require__(7)
 	module.exports.template = __webpack_require__(10)
 
 /***/ },
-/* 9 */
+/* 6 */,
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -165,6 +163,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 8 */,
+/* 9 */,
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -222,10 +222,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    methods: {
 	      resolveAlias: function (name, value) {
-	        var arr = aliases[name];
-	        for (var i = arr.length - 1; i >= 0; i--) {
-	          if (value == arr[i]) return name;
+	        var spec = aliases[name],
+	            arr, i;
+
+	        for (var prop in spec) {
+	          arr = spec[prop];
+	          for (i = arr.length - 1; i >= 0; i--) {
+	            if (value == arr[i]) return prop;
+	          }
 	        }
+
 	        return value;
 	      }
 	    },
