@@ -53,7 +53,7 @@
         default: null
       },
       grow: {
-        type: String,
+        type: Number,
         default: '1'
       },
       justify: {
