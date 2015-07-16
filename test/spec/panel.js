@@ -1,100 +1,94 @@
 describe('<v-panel/>', function () {
   Vue.use(VuePanel);
 
-  var $stage = document.querySelector('#panel');
-  var $main = document.querySelector('#panel .render');
+  var ctx = _.context(Vue.component('v-panel'), '#panel');
+  var expectEqualDeferred;
 
-  var VPanel = Vue.component('v-panel'),
-      cpnt = new VPanel(),
-      style,
-      makeExpectStyleEqual;
-
-  beforeAll(function () {
-    cpnt.$mount($main);
-    style = cpnt.$el.style;
-    makeExpectStyleEqual = _.expectEqualBuilder(expect, style);
+  beforeEach(function () {
+    ctx.reload();
+    expectEqualDeferred = _.makeExpectEqualDeferred(expect, ctx.style);
   });
-    
+
+  afterEach(function () {
+    ctx.unload.bind(ctx)
+  });
+
   it('is a valid Vue component', function () {
-    expect(typeof cpnt).toBe('object');
+    expect(typeof ctx.component).toBe('object');
   });
 
   describe('init', function () {
-    it('mounts properly', function () {
-      expect(cpnt.$el).toEqual($stage.children[0]);
-    });
-
     it('replaces parent element', function () {
-      expect($main).not.toEqual($stage.children[0]);
+      expect(ctx.$main).not.toEqual(ctx.$stage.children[0]);
     });
   });
 
   describe('style', function () {
     it('translates `$data.align-items` (alignItems) to align-items', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'alignItems', 'flex-start'))
-        .then(makeExpectStyleEqual('alignItems', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'alignItems', 'flex-start'))
+        .then(expectEqualDeferred('alignItems', 'flex-start'))
         // Aliases
-        .then(_.makeAwaitSet(cpnt, 'alignItems', 'end'))
-        .then(makeExpectStyleEqual('alignItems', 'flex-end'))
-        .then(_.makeAwaitSet(cpnt, 'alignItems', 'start'))
-        .then(makeExpectStyleEqual('alignItems', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'alignItems', 'end'))
+        .then(expectEqualDeferred('alignItems', 'flex-end'))
+        .then(_.nextTickSet(ctx.component, 'alignItems', 'start'))
+        .then(expectEqualDeferred('alignItems', 'flex-start'))
         .then(done);
     });
 
     it('translates `$data.align-self` (alignSelf) to align-self', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'alignSelf', 'flex-start'))
-        .then(makeExpectStyleEqual('alignSelf', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'alignSelf', 'flex-start'))
+        .then(expectEqualDeferred('alignSelf', 'flex-start'))
         // Aliases
-        .then(_.makeAwaitSet(cpnt, 'alignSelf', 'end'))
-        .then(makeExpectStyleEqual('alignSelf', 'flex-end'))
-        .then(_.makeAwaitSet(cpnt, 'alignSelf', 'start'))
-        .then(makeExpectStyleEqual('alignSelf', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'alignSelf', 'end'))
+        .then(expectEqualDeferred('alignSelf', 'flex-end'))
+        .then(_.nextTickSet(ctx.component, 'alignSelf', 'start'))
+        .then(expectEqualDeferred('alignSelf', 'flex-start'))
         .then(done);
     });
 
     it('translates `$data.basis` to flex-basis', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'basis', '100px'))
-        .then(makeExpectStyleEqual('flexBasis', '100px'))
+        .then(_.nextTickSet(ctx.component, 'basis', '100px'))
+        .then(expectEqualDeferred('flexBasis', '100px'))
         .then(done);
     });
 
     it('translates `$data.direction` to flex-direction', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'direction', 'column'))
-        .then(makeExpectStyleEqual('flexDirection', 'column'))
+        .then(_.nextTickSet(ctx.component, 'direction', 'column'))
+        .then(expectEqualDeferred('flexDirection', 'column'))
         .then(done);
     });
 
     it('translates `$data.flex` to flex', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'flex', '1 0 100%'))
-        .then(makeExpectStyleEqual('flex', '1 0 100%'))
+        .then(_.nextTickSet(ctx.component, 'flex', '1 0 100%'))
+        .then(expectEqualDeferred('flex', '1 0 100%'))
         .then(done);
     });
 
     it('translates `$data.grow` to flex-grow', function (done) {
-      cpnt.grow = 1;
-      _.nextTick(makeExpectStyleEqual('flexGrow', '1')).then(done);
+      ctx.component.grow = 1;
+      _.nextTick(expectEqualDeferred('flexGrow', '1')).then(done);
     });
 
     it('translates `$data.justify` to justify-content', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'justify', 'flex-start'))
-        .then(makeExpectStyleEqual('justifyContent', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'justify', 'flex-start'))
+        .then(expectEqualDeferred('justifyContent', 'flex-start'))
         // Aliases
-        .then(_.makeAwaitSet(cpnt, 'justify', 'end'))
-        .then(makeExpectStyleEqual('justifyContent', 'flex-end'))
-        .then(_.makeAwaitSet(cpnt, 'justify', 'start'))
-        .then(makeExpectStyleEqual('justifyContent', 'flex-start'))
+        .then(_.nextTickSet(ctx.component, 'justify', 'end'))
+        .then(expectEqualDeferred('justifyContent', 'flex-end'))
+        .then(_.nextTickSet(ctx.component, 'justify', 'start'))
+        .then(expectEqualDeferred('justifyContent', 'flex-start'))
         .then(done);
     });
 
     it('translates `$data.shrink` to flex-shrink', function (done) {
-      cpnt.shrink = 1;
-      _.nextTick(makeExpectStyleEqual('flexShrink', '1')).then(done);
+      ctx.component.shrink = 1;
+      _.nextTick(expectEqualDeferred('flexShrink', '1')).then(done);
     });
   });
 });

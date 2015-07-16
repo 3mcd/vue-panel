@@ -1,24 +1,34 @@
 <template>
-  <v-panel-bar v-style="
-    flex-direction: direction,
-    flex-basis: size,
-    flex-shrink: shrink,
-    display: display">
+  <div v-style="display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink">
     <content></content>
-  </v-panel-bar>
+  </div>
 </template>
 
 <script>
   module.exports = {
-    data: function () {
-      return {
-        size: '30px',
-        display: 'flex',
-        shrink: 0
-      };
+    props: {
+      direction: {
+        type: String,
+        default: 'row'
+      },
+      display: {
+        type: String,
+        default: 'flex'
+      },
+      shrink: {
+        type: Number,
+        default: 0
+      },
+      size: {
+        type: String,
+        default: '30px'
+      }
     },
-    props: ['direction', 'size'],
-    mixins: [require('../mixins/pass-data')],
+    watch: {
+      direction: function () {
+        this.$broadcast('v-panel-bar:direction', this.direction);
+      }
+    },
     replace: true,
   };
 </script>

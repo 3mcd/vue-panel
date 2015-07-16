@@ -1,5 +1,5 @@
 <template>
-  <v-panel v-style="
+  <div v-style="
     display: display,
     align-self: parsedAlignSelf,
     align-items: parsedAlignItems,
@@ -11,7 +11,7 @@
     flex-basis: basis,
     flex-direction: direction">
     <content></content>
-  </v-panel>
+  </div>
 </template>
 
 <script>
@@ -27,20 +27,51 @@
   };
 
   module.exports = {
-    props: ['align-items', 'align-self', 'order', 'direction', 'flex', 'grow', 'shrink', 'basis', 'justify'],
-    data: function () {
-      return {
-        direction: 'row',
-        display: 'flex',
-        alignItems: null,
-        alignSelf: null,
-        order: null,
-        flex: null,
-        grow: null,
-        shrink: null,
-        basis: null,
-        justify: null
-      };
+    props: {
+      alignItems: {
+        type: String,
+        default: 'start'
+      },
+      alignSelf: {
+        type: String,
+        default: 'start'
+      },
+      basis: {
+        type: String,
+        default: null
+      },
+      direction: {
+        type: String,
+        default: 'row'
+      },
+      display: {
+        type: String,
+        default: 'flex'
+      },
+      flex: {
+        type: String,
+        default: null
+      },
+      grow: {
+        type: String,
+        default: '1'
+      },
+      justify: {
+        type: String,
+        default: 'start'
+      },
+      order: {
+        type: String,
+        default: 0
+      },
+      shrink: {
+        type: Number,
+        default: 0
+      },
+      size: {
+        type: String,
+        default: '30px'
+      }
     },
     computed: {
       parsedAlignSelf: function () {
@@ -57,14 +88,12 @@
       resolveAlias: function (name, value) {
         var spec = aliases[name],
             arr, i;
-
         for (var prop in spec) {
           arr = spec[prop];
           for (i = arr.length - 1; i >= 0; i--) {
             if (value == arr[i]) return prop;
           }
         }
-
         return value;
       }
     },

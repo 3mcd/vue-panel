@@ -29,7 +29,7 @@ To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or `Vu
 
 The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`.
 
-`<v-panel-bar>` responds to `direction` and `size` (flex-basis). It is by default 30px wide. It will pass it's `$data.direction` value down to child components automatically so they can respond to a vertical or horizontal bar. This is currently done with a simple Vue mixin, but there should eventually be better support for [communication with transcluded components](https://github.com/yyx990803/vue/issues/923).
+`<v-panel-bar>` responds to `direction` and `size` (flex-basis). It is by default 30px wide. When the `direction` value changes, the component will broadcast the event "v-panel-bar:direction" (with it's `$data.direction` value) to child components so they can respond to it's flex-direction. This is currently done with a simple Vue mixin, but there should eventually be better support for [communication with transcluded components](https://github.com/yyx990803/vue/issues/923).
 
 `<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and `shrink`.
 

@@ -55,9 +55,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var components = {
-	  'v-panel-bar': __webpack_require__(1),
-	  'v-panel-content': __webpack_require__(5),
-	  'v-panel': __webpack_require__(11)
+	  'v-panel-bar': __webpack_require__(4),
+	  'v-panel-content': __webpack_require__(7),
+	  'v-panel': __webpack_require__(10)
 	};
 
 	module.exports = {
@@ -69,83 +69,65 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(2)
-	module.exports.template = __webpack_require__(4)
+	module.exports = __webpack_require__(5)
+	module.exports.template = __webpack_require__(6)
 
 /***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/* 5 */
+/***/ function(module, exports) {
 
 	
 	  module.exports = {
-	    data: function () {
-	      return {
-	        size: '30px',
-	        display: 'flex',
-	        shrink: 0
-	      };
+	    props: {
+	      direction: {
+	        type: String,
+	        default: 'row'
+	      },
+	      display: {
+	        type: String,
+	        default: 'flex'
+	      },
+	      shrink: {
+	        type: Number,
+	        default: 0
+	      },
+	      size: {
+	        type: String,
+	        default: '30px'
+	      }
 	    },
-	    props: ['direction', 'size'],
-	    mixins: [__webpack_require__(3)],
+	    watch: {
+	      direction: function () {
+	        this.$broadcast('v-panel-bar:direction', this.direction);
+	      }
+	    },
 	    replace: true,
 	  };
 
 
 
 /***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/* 6 */
+/***/ function(module, exports) {
 
-	module.exports = {
-	  ready: function () {
-	    for (var i = this._transCpnts.length - 1; i >= 0; i--) {
-	      this.bindData(this._transCpnts[i]);
-	    }
-	  },
-	  methods: {
-	    bindData: function (cpnt) {
-	      var _this = this;
-	      var props = cpnt.$options.props;
-
-	      if (!props)
-	        return;
-
-	      (function bind(i) {
-	        var prop = props[i];
-	        if (_this.$data[prop] !== void(0)) {
-	          cpnt.$watch(prop, function (value) {
-	            _this.$set(prop, value);
-	          });
-	          _this.$watch(prop, function (value) {
-	            cpnt.$set(prop, value);
-	          }, false, true);
-	        }
-	        return i !== 0 && bind(i - 1);
-	      }(props.length - 1));
-	    }
-	  }
-	};
+	module.exports = "\r\n  <div v-style=\"display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink\">\r\n    <content></content>\r\n  </div>\r\n\n";
 
 /***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\r\n  <v-panel-bar v-style=\"\r\n    flex-direction: direction,\r\n    flex-basis: size,\r\n    flex-shrink: shrink,\r\n    display: display\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
-
-/***/ },
-/* 5 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(7)
-	module.exports.template = __webpack_require__(10)
-
-/***/ },
-/* 6 */,
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(8)
+	module.exports.template = __webpack_require__(9)
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
 
 	
 	  module.exports = {
@@ -157,29 +139,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	        basis: null
 	      };
 	    },
+	    props: ['flex', 'grow', 'shrink', 'basis'],
 	    replace: true
 	  };
 
 
 
 /***/ },
-/* 8 */,
-/* 9 */,
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n  <v-panel-content v-style=\"flex: flex, flex-grow: grow, flex-shrink: shrink, flex-basis: basis\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
+
+/***/ },
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\r\n  <v-panel-content v-style=\"\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
+	module.exports = __webpack_require__(11)
+	module.exports.template = __webpack_require__(12)
 
 /***/ },
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__(12)
-	module.exports.template = __webpack_require__(13)
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	
 	  var common = {
@@ -194,20 +175,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  module.exports = {
-	    props: ['align-items', 'align-self', 'order', 'direction', 'flex', 'grow', 'shrink', 'basis', 'justify'],
-	    data: function () {
-	      return {
-	        direction: 'row',
-	        display: 'flex',
-	        alignItems: null,
-	        alignSelf: null,
-	        order: null,
-	        flex: null,
-	        grow: null,
-	        shrink: null,
-	        basis: null,
-	        justify: null
-	      };
+	    props: {
+	      alignItems: {
+	        type: String,
+	        default: 'start'
+	      },
+	      alignSelf: {
+	        type: String,
+	        default: 'start'
+	      },
+	      basis: {
+	        type: String,
+	        default: null
+	      },
+	      direction: {
+	        type: String,
+	        default: 'row'
+	      },
+	      display: {
+	        type: String,
+	        default: 'flex'
+	      },
+	      flex: {
+	        type: String,
+	        default: null
+	      },
+	      grow: {
+	        type: String,
+	        default: '1'
+	      },
+	      justify: {
+	        type: String,
+	        default: 'start'
+	      },
+	      order: {
+	        type: String,
+	        default: 0
+	      },
+	      shrink: {
+	        type: Number,
+	        default: 0
+	      },
+	      size: {
+	        type: String,
+	        default: '30px'
+	      }
 	    },
 	    computed: {
 	      parsedAlignSelf: function () {
@@ -224,14 +236,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      resolveAlias: function (name, value) {
 	        var spec = aliases[name],
 	            arr, i;
-
 	        for (var prop in spec) {
 	          arr = spec[prop];
 	          for (i = arr.length - 1; i >= 0; i--) {
 	            if (value == arr[i]) return prop;
 	          }
 	        }
-
 	        return value;
 	      }
 	    },
@@ -241,10 +251,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/* 12 */
+/***/ function(module, exports) {
 
-	module.exports = "\r\n  <v-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </v-panel>\r\n\n";
+	module.exports = "\r\n  <div v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </div>\r\n\n";
 
 /***/ }
 /******/ ])

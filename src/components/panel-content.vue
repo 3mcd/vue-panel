@@ -1,9 +1,5 @@
 <template>
-  <v-panel-content v-style="
-    flex: flex,
-    flex-grow: grow,
-    flex-shrink: shrink,
-    flex-basis: basis">
+  <v-panel-content v-style="flex: flex, flex-grow: grow, flex-shrink: shrink, flex-basis: basis">
     <content></content>
   </v-panel-content>
 </template>
@@ -18,6 +14,7 @@
         basis: null
       };
     },
+    props: ['flex', 'grow', 'shrink', 'basis'],
     replace: true
   };
 </script>

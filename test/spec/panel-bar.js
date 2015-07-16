@@ -1,51 +1,66 @@
 describe('<v-panel-bar/>', function () {
-  
   Vue.use(VuePanel);
-
-  var $stage = document.querySelector('#panel-bar');
-  var $main = document.querySelector('#panel-bar .render');
   
-  var VPanel = Vue.component('v-panel-bar'),
-      cpnt = new VPanel(),
-      style,
-      makeExpectStyleEqual;
+  var ctx = _.context(Vue.component('v-panel-bar'), '#panel-bar');
+  var expectEqualDeferred;
 
-  beforeAll(function () {
-    cpnt.$mount($main)
-    style = cpnt.$el.style;
-    makeExpectStyleEqual = _.expectEqualBuilder(expect, style);
+  beforeEach(function () {
+    ctx.reload();
+    expectEqualDeferred = _.makeExpectEqualDeferred(expect, ctx.style);
   });
-    
+
+  afterEach(function () {
+    ctx.unload.bind(ctx)
+  });
+
   it('is a valid Vue component', function () {
-    expect(typeof cpnt).toBe('object');
+    expect(typeof ctx.component).toBe('object');
   });
 
   describe('init', function () {
-    it('mounts properly', function () {
-      expect(cpnt.$el).toEqual($stage.children[0]);
-    });
-
     it('replaces parent element', function () {
-      expect($main).not.toEqual($stage.children[0]);
+      expect(ctx.$main).not.toEqual(ctx.$stage.children[0]);
     });
   });
 
   describe('style', function () {
     it('doesn\'t shrink by default', function (done) {
-      _.nextTick(makeExpectStyleEqual('flexShrink', '0')).then(done);
+      _.nextTick(expectEqualDeferred('flexShrink', '0')).then(done);
     });
 
     it('translates `$data.direction` to flex-direction', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'direction', 'column'))
-        .then(makeExpectStyleEqual('flexDirection', 'column'))
+        .then(_.nextTickSet(ctx.component, 'direction', 'column'))
+        .then(expectEqualDeferred('flexDirection', 'column'))
         .then(done);
     });
 
     it('translates `$data.size` to flex-basis', function (done) {
       _.nextTick()
-        .then(_.makeAwaitSet(cpnt, 'size', '100px'))
-        .then(makeExpectStyleEqual('flexBasis', '100px'))
+        .then(_.nextTickSet(ctx.component, 'size', '100px'))
+        .then(expectEqualDeferred('flexBasis', '100px'))
+        .then(done);
+    });
+  });
+
+  describe('data', function () {
+    it('broadcasts an event to child components when `$data.direction` changes', function (done) {
+      var result;
+
+      ctx.component.$addChild({
+        events: {
+          'v-panel-bar:direction': function (value) {
+            result = value;
+          }
+        }
+      });
+
+      ctx.component.direction = 'column';
+
+      _.nextTick()
+        .then(function () {
+          expect(result).toEqual(ctx.component.direction);
+        })
         .then(done);
     });
   });
