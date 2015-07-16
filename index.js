@@ -201,8 +201,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        default: null
 	      },
 	      grow: {
-	        type: String,
-	        default: '1'
+	        type: Number,
+	        default: 1
 	      },
 	      justify: {
 	        type: String,
