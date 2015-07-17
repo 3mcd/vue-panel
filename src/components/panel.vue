@@ -1,5 +1,5 @@
 <template>
-  <div v-style="
+  <v-panel v-style="
     display: display,
     align-self: parsedAlignSelf,
     align-items: parsedAlignItems,
@@ -11,7 +11,7 @@
     flex-basis: basis,
     flex-direction: direction">
     <content></content>
-  </div>
+  </v-panel>
 </template>
 
 <script>
@@ -28,50 +28,25 @@
 
   module.exports = {
     props: {
-      alignItems: {
-        type: String,
-        default: 'start'
-      },
-      alignSelf: {
-        type: String,
-        default: 'start'
-      },
+      alignItems: String,
+      alignSelf: String,
       basis: {
         type: String,
-        default: null
+        default: '0'
       },
-      direction: {
-        type: String,
-        default: 'row'
-      },
+      direction: String,
       display: {
         type: String,
         default: 'flex'
       },
-      flex: {
-        type: String,
-        default: null
-      },
+      flex: String,
       grow: {
         type: Number,
         default: 1
       },
-      justify: {
-        type: String,
-        default: 'start'
-      },
-      order: {
-        type: String,
-        default: 0
-      },
-      shrink: {
-        type: Number,
-        default: 0
-      },
-      size: {
-        type: String,
-        default: '30px'
-      }
+      justify: String,
+      order: Number,
+      shrink: Number,
     },
     computed: {
       parsedAlignSelf: function () {

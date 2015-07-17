@@ -131,15 +131,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	
 	  module.exports = {
-	    data: function () {
-	      return {
-	        flex: 1,
-	        grow: null,
-	        shrink: null,
-	        basis: null
-	      };
+	    props: {
+	      flex: String,
+	      grow: {
+	        type: Number,
+	        default: 1
+	      },
+	      shrink: Number,
+	      basis: {
+	        type: String,
+	        default: '0'
+	      }
 	    },
-	    props: ['flex', 'grow', 'shrink', 'basis'],
 	    replace: true
 	  };
 
@@ -176,50 +179,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  module.exports = {
 	    props: {
-	      alignItems: {
-	        type: String,
-	        default: 'start'
-	      },
-	      alignSelf: {
-	        type: String,
-	        default: 'start'
-	      },
+	      alignItems: String,
+	      alignSelf: String,
 	      basis: {
 	        type: String,
-	        default: null
+	        default: '0'
 	      },
-	      direction: {
-	        type: String,
-	        default: 'row'
-	      },
+	      direction: String,
 	      display: {
 	        type: String,
 	        default: 'flex'
 	      },
-	      flex: {
-	        type: String,
-	        default: null
-	      },
+	      flex: String,
 	      grow: {
 	        type: Number,
 	        default: 1
 	      },
-	      justify: {
-	        type: String,
-	        default: 'start'
-	      },
-	      order: {
-	        type: String,
-	        default: 0
-	      },
-	      shrink: {
-	        type: Number,
-	        default: 0
-	      },
-	      size: {
-	        type: String,
-	        default: '30px'
-	      }
+	      justify: String,
+	      order: Number,
+	      shrink: Number,
 	    },
 	    computed: {
 	      parsedAlignSelf: function () {
@@ -254,7 +232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <div v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </div>\r\n\n";
+	module.exports = "\r\n  <v-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </v-panel>\r\n\n";
 
 /***/ }
 /******/ ])
