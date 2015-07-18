@@ -31,8 +31,7 @@
       alignItems: String,
       alignSelf: String,
       basis: {
-        type: String,
-        default: '0'
+        default: 0
       },
       direction: String,
       display: {
