@@ -98,7 +98,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        default: 0
 	      },
 	      size: {
-	        type: String,
 	        default: '30px'
 	      }
 	    },
@@ -116,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <div v-style=\"display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink\">\r\n    <content></content>\r\n  </div>\r\n\n";
+	module.exports = "\n  <v-panel-bar v-style=\"display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink\">\n    <content></content>\n  </v-panel-bar>\n\n";
 
 /***/ },
 /* 7 */
@@ -131,15 +130,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	
 	  module.exports = {
-	    data: function () {
-	      return {
-	        flex: 1,
-	        grow: null,
-	        shrink: null,
-	        basis: null
-	      };
+	    props: {
+	      flex: String,
+	      grow: {
+	        type: Number,
+	        default: 1
+	      },
+	      shrink: Number,
+	      basis: {
+	        default: 0
+	      }
 	    },
-	    props: ['flex', 'grow', 'shrink', 'basis'],
 	    replace: true
 	  };
 
@@ -149,7 +150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <v-panel-content v-style=\"flex: flex, flex-grow: grow, flex-shrink: shrink, flex-basis: basis\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
+	module.exports = "\n  <v-panel-content v-style=\"flex: flex, flex-grow: grow, flex-shrink: shrink, flex-basis: basis\">\n    <content></content>\n  </v-panel-content>\n\n";
 
 /***/ },
 /* 10 */
@@ -176,50 +177,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  module.exports = {
 	    props: {
-	      alignItems: {
-	        type: String,
-	        default: 'start'
-	      },
-	      alignSelf: {
-	        type: String,
-	        default: 'start'
-	      },
+	      alignItems: String,
+	      alignSelf: String,
 	      basis: {
-	        type: String,
-	        default: null
+	        default: 0
 	      },
-	      direction: {
-	        type: String,
-	        default: 'row'
-	      },
+	      direction: String,
 	      display: {
 	        type: String,
 	        default: 'flex'
 	      },
-	      flex: {
-	        type: String,
-	        default: null
-	      },
+	      flex: String,
 	      grow: {
 	        type: Number,
 	        default: 1
 	      },
-	      justify: {
-	        type: String,
-	        default: 'start'
-	      },
-	      order: {
-	        type: String,
-	        default: 0
-	      },
-	      shrink: {
-	        type: Number,
-	        default: 0
-	      },
-	      size: {
-	        type: String,
-	        default: '30px'
-	      }
+	      justify: String,
+	      order: Number,
+	      shrink: Number,
 	    },
 	    computed: {
 	      parsedAlignSelf: function () {
@@ -254,7 +229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <div v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </div>\r\n\n";
+	module.exports = "\n  <v-panel v-style=\"\n    display: display,\n    align-self: parsedAlignSelf,\n    align-items: parsedAlignItems,\n    justify-content: parsedJustifyContent,\n    order: order,\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis,\n    flex-direction: direction\">\n    <content></content>\n  </v-panel>\n\n";
 
 /***/ }
 /******/ ])

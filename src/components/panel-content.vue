@@ -6,15 +6,17 @@
 
 <script>
   module.exports = {
-    data: function () {
-      return {
-        flex: 1,
-        grow: null,
-        shrink: null,
-        basis: null
-      };
+    props: {
+      flex: String,
+      grow: {
+        type: Number,
+        default: 1
+      },
+      shrink: Number,
+      basis: {
+        default: 0
+      }
     },
-    props: ['flex', 'grow', 'shrink', 'basis'],
     replace: true
   };
 </script>

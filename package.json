@@ -1,6 +1,6 @@
 {
   "name": "vue-panel",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Suite of Vue components for building Flexbox layouts",
   "main": "index.js",
   "scripts": {

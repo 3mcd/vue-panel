@@ -1,7 +1,7 @@
 <template>
-  <div v-style="display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink">
+  <v-panel-bar v-style="display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink">
     <content></content>
-  </div>
+  </v-panel-bar>
 </template>
 
 <script>
@@ -20,7 +20,6 @@
         default: 0
       },
       size: {
-        type: String,
         default: '30px'
       }
     },

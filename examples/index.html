@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-panel examples</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <v-panel-bar class="Panel-bar" direction="column" size="60px">
+        <div class="Button">A</div>
+        <div class="Button">B</div>
+        <div class="Button">C</div>
+        <div class="Button">D</div>
+        <div class="Button">E</div>
+      </v-panel-bar>
+      <v-panel class="Panel" direction="row" grow="2">
+        <v-panel-content class="Panel-content Panel-content--main">
+          <h1>Lorem</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </v-panel-content>
+      </v-panel>
+      <v-panel class="Panel" direction="column">
+        <v-panel class="Panel" direction="column" grow="5">
+          <v-panel-bar class="Panel-bar" direction="row" size="40px">
+            <div class="Button">F</div>
+            <div class="Button">G</div>
+            <div class="Button">H</div>
+            <v-panel justify="flex-end">
+              <input type="text" placeholder="Enter a search term" v-model="search">
+            </v-panel>
+          </v-panel-bar>
+          <v-panel-content class="Panel-content">
+            <div v-repeat="states | filterBy search">
+              <h3>{{abbreviation}}</h3>
+              <p>{{name}}</p>
+            </div>
+          </v-panel-content>
+        </v-panel>
+        <v-panel class="Panel Panel--dark" basis="auto" grow="0">
+          <v-panel-content class="Panel-content">
+            <h4>Notice</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </v-panel-content>
+        </v-panel>
+        <v-panel-bar class="Panel-bar Panel-bar--copy">
+          <span>Copyright &copy; All rights reserved.</span>
+        </v-panel-bar>
+      </v-panel>
+    </div>
+    <script type="text/javascript" src="../node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="../index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
