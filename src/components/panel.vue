@@ -30,9 +30,7 @@
     props: {
       alignItems: String,
       alignSelf: String,
-      basis: {
-        default: 0
-      },
+      basis: {},
       direction: String,
       display: {
         type: String,
@@ -40,12 +38,11 @@
       },
       flex: String,
       grow: {
-        type: Number,
-        default: 1
+        type: Number
       },
       justify: String,
       order: Number,
-      shrink: Number,
+      shrink: Number
     },
     computed: {
       parsedAlignSelf: function () {
