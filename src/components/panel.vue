@@ -37,13 +37,12 @@
         default: 'flex'
       },
       flex: String,
-      grow: {
-        type: Number
-      },
+      grow: Number,
       justify: String,
       order: Number,
       shrink: Number
     },
+
     computed: {
       parsedAlignSelf: function () {
         return this.resolveAlias('align-self', this.$data.alignSelf);
@@ -55,19 +54,21 @@
         return this.resolveAlias('align-items', this.$data.justify);
       }
     },
+
     methods: {
       resolveAlias: function (name, value) {
         var spec = aliases[name],
             arr, i;
+
         for (var prop in spec) {
           arr = spec[prop];
           for (i = arr.length - 1; i >= 0; i--) {
             if (value == arr[i]) return prop;
           }
         }
+
         return value;
       }
-    },
-    replace: true
+    }
   };
 </script>

@@ -1,5 +1,9 @@
 <template>
-  <v-panel-bar v-style="display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink">
+  <v-panel-bar v-style="
+    display: 'flex',
+    flex-basis: size,
+    flex-direction: direction,
+    flex-shrink: shrink">
     <content></content>
   </v-panel-bar>
 </template>
@@ -20,6 +24,7 @@
         default: 0
       },
       size: {
+        type: String,
         default: '30px'
       }
     },
@@ -27,7 +32,6 @@
       direction: function () {
         this.$broadcast('v-panel-bar:direction', this.direction);
       }
-    },
-    replace: true,
+    }
   };
 </script>
