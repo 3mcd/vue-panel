@@ -79,10 +79,7 @@ Vue.use(VuePanel, {
 ```
 
 `class` is currently the only option that has any built-in effect. The value
-from `class` will be added to the class list of each component instance. It is
-also important to note that Vue will throw a warn message for any properties
-other than `class`, since those properties wouldn't be in the component's `data`
-initializer.
+from `class` will be added to the class list of each component instance.
 
 ###Example
 
