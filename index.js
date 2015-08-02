@@ -78,12 +78,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = __webpack_require__(5)
 	module.exports.template = __webpack_require__(6)
 
+
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	
-	  module.exports = {
+	module.exports = {
 	    props: {
 	      direction: {
 	        type: String,
@@ -98,6 +98,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        default: 0
 	      },
 	      size: {
+	        type: String,
 	        default: '30px'
 	      }
 	    },
@@ -105,17 +106,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      direction: function () {
 	        this.$broadcast('v-panel-bar:direction', this.direction);
 	      }
-	    },
-	    replace: true,
+	    }
 	  };
-
-
 
 /***/ },
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <v-panel-bar v-style=\"display: 'flex', flex-basis: size, flex-direction: direction, flex-shrink: shrink\">\r\n    <content></content>\r\n  </v-panel-bar>\r\n\n";
+	module.exports = "<v-panel-bar v-style=\"\n    display: 'flex',\n    flex-basis: size,\n    flex-direction: direction,\n    flex-shrink: shrink\">\n    <content></content>\n  </v-panel-bar>";
 
 /***/ },
 /* 7 */
@@ -124,12 +122,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = __webpack_require__(8)
 	module.exports.template = __webpack_require__(9)
 
+
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
 
-	
-	  module.exports = {
+	module.exports = {
 	    props: {
 	      flex: String,
 	      grow: {
@@ -140,17 +138,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      basis: {
 	        default: 0
 	      }
-	    },
-	    replace: true
+	    }
 	  };
-
-
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <v-panel-content v-style=\"flex: flex, flex-grow: grow, flex-shrink: shrink, flex-basis: basis\">\r\n    <content></content>\r\n  </v-panel-content>\r\n\n";
+	module.exports = "<v-panel-content v-style=\"\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis\">\n    <content></content>\n  </v-panel-content>";
 
 /***/ },
 /* 10 */
@@ -159,12 +154,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = __webpack_require__(11)
 	module.exports.template = __webpack_require__(12)
 
+
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	
-	  var common = {
+	var common = {
 	    'flex-start': ['start'],
 	    'flex-end': ['end']
 	  };
@@ -186,13 +181,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        default: 'flex'
 	      },
 	      flex: String,
-	      grow: {
-	        type: Number
-	      },
+	      grow: Number,
 	      justify: String,
 	      order: Number,
 	      shrink: Number
 	    },
+
 	    computed: {
 	      parsedAlignSelf: function () {
 	        return this.resolveAlias('align-self', this.$data.alignSelf);
@@ -204,29 +198,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this.resolveAlias('align-items', this.$data.justify);
 	      }
 	    },
+
 	    methods: {
 	      resolveAlias: function (name, value) {
 	        var spec = aliases[name],
 	            arr, i;
+
 	        for (var prop in spec) {
 	          arr = spec[prop];
 	          for (i = arr.length - 1; i >= 0; i--) {
 	            if (value == arr[i]) return prop;
 	          }
 	        }
+
 	        return value;
 	      }
-	    },
-	    replace: true
+	    }
 	  };
-
-
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n  <v-panel v-style=\"\r\n    display: display,\r\n    align-self: parsedAlignSelf,\r\n    align-items: parsedAlignItems,\r\n    justify-content: parsedJustifyContent,\r\n    order: order,\r\n    flex: flex,\r\n    flex-grow: grow,\r\n    flex-shrink: shrink,\r\n    flex-basis: basis,\r\n    flex-direction: direction\">\r\n    <content></content>\r\n  </v-panel>\r\n\n";
+	module.exports = "<v-panel v-style=\"\n    display: display,\n    align-self: parsedAlignSelf,\n    align-items: parsedAlignItems,\n    justify-content: parsedJustifyContent,\n    order: order,\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis,\n    flex-direction: direction\">\n    <content></content>\n  </v-panel>";
 
 /***/ }
 /******/ ])
