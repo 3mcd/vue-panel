@@ -1,11 +1,11 @@
 <template>
-  <v-panel-bar v-style="
+  <div v-class="class" v-style="
     display: 'flex',
     flex-basis: size,
     flex-direction: direction,
     flex-shrink: shrink">
     <content></content>
-  </v-panel-bar>
+  </div>
 </template>
 
 <script>
@@ -30,7 +30,7 @@
     },
     watch: {
       direction: function () {
-        this.$broadcast('v-panel-bar:direction', this.direction);
+        this.$broadcast('div:direction', this.direction);
       }
     }
   };

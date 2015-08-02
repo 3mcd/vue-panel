@@ -11,7 +11,7 @@
   "devDependencies": {
     "html-loader": "^0.3.0",
     "node-libs-browser": "^0.5.2",
-    "vue": "0.12.8",
+    "vue": "*",
     "vue-loader": "*",
     "webpack": "^1.9.0"
   }

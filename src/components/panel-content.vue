@@ -1,11 +1,11 @@
 <template>
-  <v-panel-content v-style="
+  <div v-class="class" v-style="
     flex: flex,
     flex-grow: grow,
     flex-shrink: shrink,
     flex-basis: basis">
     <content></content>
-  </v-panel-content>
+  </div>
 </template>
 
 <script>

@@ -5,9 +5,19 @@ var components = {
 };
 
 module.exports = {
-  install: function (Vue) {
+  install: function (Vue, options) {
+    var component;
+
+    options = options || {};
+
     for (var prop in components) {
-      Vue.component(prop, components[prop]);
+      component = components[prop];
+
+      component.data = function () {
+        return options[prop] || options[Vue.util.camelize(prop)];
+      };
+
+      Vue.component(prop, component);
     }
   }
 };

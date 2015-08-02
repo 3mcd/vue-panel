@@ -1,5 +1,5 @@
 <template>
-  <v-panel v-style="
+  <div v-class="class" v-style="
     display: display,
     align-self: parsedAlignSelf,
     align-items: parsedAlignItems,
@@ -11,7 +11,7 @@
     flex-basis: basis,
     flex-direction: direction">
     <content></content>
-  </v-panel>
+  </div>
 </template>
 
 <script>

@@ -61,12 +61,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = {
-	  install: function (Vue) {
+	  install: function (Vue, options) {
+	    var component;
+
+	    options = options || {};
+
 	    for (var prop in components) {
-	      Vue.component(prop, components[prop]);
+	      component = components[prop];
+
+	      component.data = function () {
+	        return options[prop] || options[Vue.util.camelize(prop)];
+	      };
+
+	      Vue.component(prop, component);
 	    }
 	  }
 	};
+
 
 /***/ },
 /* 1 */,
@@ -104,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    watch: {
 	      direction: function () {
-	        this.$broadcast('v-panel-bar:direction', this.direction);
+	        this.$broadcast('div:direction', this.direction);
 	      }
 	    }
 	  };
@@ -113,7 +124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "<v-panel-bar v-style=\"\n    display: 'flex',\n    flex-basis: size,\n    flex-direction: direction,\n    flex-shrink: shrink\">\n    <content></content>\n  </v-panel-bar>";
+	module.exports = "<div v-class=\"class\" v-style=\"\n    display: 'flex',\n    flex-basis: size,\n    flex-direction: direction,\n    flex-shrink: shrink\">\n    <content></content>\n  </div>";
 
 /***/ },
 /* 7 */
@@ -145,7 +156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<v-panel-content v-style=\"\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis\">\n    <content></content>\n  </v-panel-content>";
+	module.exports = "<div v-class=\"class\" v-style=\"\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis\">\n    <content></content>\n  </div>";
 
 /***/ },
 /* 10 */
@@ -220,7 +231,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "<v-panel v-style=\"\n    display: display,\n    align-self: parsedAlignSelf,\n    align-items: parsedAlignItems,\n    justify-content: parsedJustifyContent,\n    order: order,\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis,\n    flex-direction: direction\">\n    <content></content>\n  </v-panel>";
+	module.exports = "<div v-class=\"class\" v-style=\"\n    display: display,\n    align-self: parsedAlignSelf,\n    align-items: parsedAlignItems,\n    justify-content: parsedJustifyContent,\n    order: order,\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis,\n    flex-direction: direction\">\n    <content></content>\n  </div>";
 
 /***/ }
 /******/ ])
