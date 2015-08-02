@@ -12,19 +12,15 @@
   module.exports = {
     data: function () {
       return {
-        class: ''
+        grow: 1,
+        basis: 0
       };
     },
     props: {
       flex: String,
-      grow: {
-        type: Number,
-        default: 1
-      },
+      grow: Number,
       shrink: Number,
-      basis: {
-        default: 0
-      }
+      basis: null
     }
   };
 </script>

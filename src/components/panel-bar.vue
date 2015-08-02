@@ -12,40 +12,21 @@
   module.exports = {
     data: function () {
       return {
-        class: ''
+        direction: 'row',
+        display: 'flex',
+        shrink: 0,
+        size: '30px'
       };
     },
     props: {
-      direction: {
-        type: String,
-        default: 'row'
-      },
-      display: {
-        type: String,
-        default: 'flex'
-      },
-      shrink: {
-        type: Number,
-        default: 0
-      },
-      size: {
-        type: String,
-        default: '30px'
-      }
+      direction: String,
+      display: String,
+      shrink: Number,
+      size: String
     },
     watch: {
       direction: function () {
-        this.$broadcast('div:direction', this.direction);
-      }
-    },
-    ready: function () {
-      var config = this.constructor.pluginConfig;
-      console.dir(this.constructor);
-
-      if (config) {
-        for (var prop in config) {
-          this.$set(prop, config[prop]);
-        }
+        this.$broadcast('v-panel-bar:direction', this.direction);
       }
     }
   };

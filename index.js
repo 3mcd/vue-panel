@@ -69,19 +69,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (var prop in components) {
 	      component = components[prop];
 
-	      var ready = component.ready;
+	      component.mixins = component.mixins || [];
 
-	      component.ready = (function (config) {
-	        return function () {
-	          if (config) {
-	            for (var prop in config) {
-	              this.$set(prop, config[prop]);
-	            }
+	      ;(function (config) {
+	        component.mixins.push({
+	          data: function () {
+	            return config;
 	          }
-	          if (ready instanceof Function) {
-	            ready();
-	          }
-	        };
+	        });
 	      }(options[prop] || options[Vue.util.camelize(prop)]));
 
 	      Vue.component(prop, component);
@@ -108,40 +103,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	    data: function () {
 	      return {
-	        class: ''
+	        direction: 'row',
+	        display: 'flex',
+	        shrink: 0,
+	        size: '30px'
 	      };
 	    },
 	    props: {
-	      direction: {
-	        type: String,
-	        default: 'row'
-	      },
-	      display: {
-	        type: String,
-	        default: 'flex'
-	      },
-	      shrink: {
-	        type: Number,
-	        default: 0
-	      },
-	      size: {
-	        type: String,
-	        default: '30px'
-	      }
+	      direction: String,
+	      display: String,
+	      shrink: Number,
+	      size: String
 	    },
 	    watch: {
 	      direction: function () {
-	        this.$broadcast('div:direction', this.direction);
-	      }
-	    },
-	    ready: function () {
-	      var config = this.constructor.pluginConfig;
-	      console.dir(this.constructor);
-
-	      if (config) {
-	        for (var prop in config) {
-	          this.$set(prop, config[prop]);
-	        }
+	        this.$broadcast('v-panel-bar:direction', this.direction);
 	      }
 	    }
 	  };
@@ -167,19 +143,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	    data: function () {
 	      return {
-	        class: ''
+	        grow: 1,
+	        basis: 0
 	      };
 	    },
 	    props: {
 	      flex: String,
-	      grow: {
-	        type: Number,
-	        default: 1
-	      },
+	      grow: Number,
 	      shrink: Number,
-	      basis: {
-	        default: 0
-	      }
+	      basis: null
 	    }
 	  };
 
@@ -215,18 +187,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  module.exports = {
 	    data: function () {
 	      return {
-	        class: ''
+	        display: 'flex'
 	      };
 	    },
 	    props: {
 	      alignItems: String,
 	      alignSelf: String,
-	      basis: {},
+	      basis: null,
 	      direction: String,
-	      display: {
-	        type: String,
-	        default: 'flex'
-	      },
+	      display: String,
 	      flex: String,
 	      grow: Number,
 	      justify: String,

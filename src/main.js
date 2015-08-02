@@ -13,19 +13,14 @@ module.exports = {
     for (var prop in components) {
       component = components[prop];
 
-      var ready = component.ready;
+      component.mixins = component.mixins || [];
 
-      component.ready = (function (config) {
-        return function () {
-          if (config) {
-            for (var prop in config) {
-              this.$set(prop, config[prop]);
-            }
+      ;(function (config) {
+        component.mixins.push({
+          data: function () {
+            return config;
           }
-          if (ready instanceof Function) {
-            ready();
-          }
-        };
+        });
       }(options[prop] || options[Vue.util.camelize(prop)]));
 
       Vue.component(prop, component);

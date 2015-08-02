@@ -29,18 +29,15 @@
   module.exports = {
     data: function () {
       return {
-        class: ''
+        display: 'flex'
       };
     },
     props: {
       alignItems: String,
       alignSelf: String,
-      basis: {},
+      basis: null,
       direction: String,
-      display: {
-        type: String,
-        default: 'flex'
-      },
+      display: String,
       flex: String,
       grow: Number,
       justify: String,
