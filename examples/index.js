@@ -241,7 +241,17 @@
       }
     ];
 
-  Vue.use(VuePanel);
+  Vue.use(VuePanel, {
+    'v-panel': {
+      class: 'Panel'
+    },
+    'vPanelBar': {
+      class: 'Panel-bar'
+    },
+    'vPanelContent': {
+      class: 'Panel-content'
+    }
+  });
 
   var app = new Vue({
     el: '#app',
