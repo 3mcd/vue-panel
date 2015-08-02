@@ -10,6 +10,11 @@
 
 <script>
   module.exports = {
+    data: function () {
+      return {
+        class: ''
+      };
+    },
     props: {
       direction: {
         type: String,
@@ -31,6 +36,16 @@
     watch: {
       direction: function () {
         this.$broadcast('div:direction', this.direction);
+      }
+    },
+    ready: function () {
+      var config = this.constructor.pluginConfig;
+      console.dir(this.constructor);
+
+      if (config) {
+        for (var prop in config) {
+          this.$set(prop, config[prop]);
+        }
       }
     }
   };

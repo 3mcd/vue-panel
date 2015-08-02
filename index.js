@@ -69,9 +69,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (var prop in components) {
 	      component = components[prop];
 
-	      component.data = function () {
-	        return options[prop] || options[Vue.util.camelize(prop)];
-	      };
+	      var ready = component.ready;
+
+	      component.ready = (function (config) {
+	        return function () {
+	          if (config) {
+	            for (var prop in config) {
+	              this.$set(prop, config[prop]);
+	            }
+	          }
+	          if (ready instanceof Function) {
+	            ready();
+	          }
+	        };
+	      }(options[prop] || options[Vue.util.camelize(prop)]));
 
 	      Vue.component(prop, component);
 	    }
@@ -95,6 +106,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = {
+	    data: function () {
+	      return {
+	        class: ''
+	      };
+	    },
 	    props: {
 	      direction: {
 	        type: String,
@@ -116,6 +132,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    watch: {
 	      direction: function () {
 	        this.$broadcast('div:direction', this.direction);
+	      }
+	    },
+	    ready: function () {
+	      var config = this.constructor.pluginConfig;
+	      console.dir(this.constructor);
+
+	      if (config) {
+	        for (var prop in config) {
+	          this.$set(prop, config[prop]);
+	        }
 	      }
 	    }
 	  };
@@ -139,6 +165,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = {
+	    data: function () {
+	      return {
+	        class: ''
+	      };
+	    },
 	    props: {
 	      flex: String,
 	      grow: {
@@ -182,6 +213,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  module.exports = {
+	    data: function () {
+	      return {
+	        class: ''
+	      };
+	    },
 	    props: {
 	      alignItems: String,
 	      alignSelf: String,

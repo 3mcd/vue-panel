@@ -27,6 +27,11 @@
   };
 
   module.exports = {
+    data: function () {
+      return {
+        class: ''
+      };
+    },
     props: {
       alignItems: String,
       alignSelf: String,

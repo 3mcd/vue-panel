@@ -10,6 +10,11 @@
 
 <script>
   module.exports = {
+    data: function () {
+      return {
+        class: ''
+      };
+    },
     props: {
       flex: String,
       grow: {
