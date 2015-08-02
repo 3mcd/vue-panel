@@ -1,22 +1,28 @@
 #vue-panel
 
-This plugin aims to provide your [Vue](http://vuejs.org/) application with a handful of light, composable, Flexbox-powered components.
+This plugin aims to provide your [Vue](http://vuejs.org/) application with a
+handful of light, composable, Flexbox-powered components.
 
 ###Installation
 
-Just `bower` or `npm install ericmcdaniel/vue-panel`. The package is exposed as a UMD module so you can require it with Browserify/Webpack/etc. or include it in your page via script tag.
+Just `bower` or `npm install ericmcdaniel/vue-panel`. The package is exposed as
+a UMD module so you can require it with Browserify/Webpack/etc. or include it in
+your page via script tag.
 
-To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or `Vue.use(window.VuePanel)` if including in a script tag.
+To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or
+`Vue.use(window.VuePanel)` if including in a script tag.
 
 ###Use
 
-`<v-panel>` responds to a variety of Flexbox parameters and is useable as both a `display: flex` element and a flex-item:
+`<v-panel>` responds to a variety of Flexbox parameters and is useable as both a
+`display: flex` element and a flex-item:
 
 ```html
 <v-panel grow="1" shrink="0"></v-panel>
 ```
 
-`<v-panel>` will display any content inside of the element as it's own "transclusion" content:
+`<v-panel>` will display any content inside of the element as it's own
+transclusion content:
 
 ```html
 <v-panel basis="200px">
@@ -25,13 +31,20 @@ To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or `Vu
 </v-panel>
 ```
 
-`<v-panel>` responds to `align-items`, `align-self`, `order`, `direction`, (flex-direction) `flex`, `grow` (flex-grow), `shrink` (flex-shrink), `basis` (flex-basis), and `justify` (justify-content).
+`<v-panel>` responds to `align-items`, `align-self`, `order`, `direction`
+(flex-direction), `flex`, `grow` (flex-grow), `shrink` (flex-shrink), `basis`
+(flex-basis), and `justify` (justify-content).
 
-The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`.
+The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`
+.
 
-`<v-panel-bar>` responds to `direction` and `size` (flex-basis). It is by default 30px wide. When the `direction` value changes, the component will broadcast the event `v-panel-bar:direction` (with it's `$data.direction` value) to child components so they can respond to it's flex-direction. 
+`<v-panel-bar>` responds to `direction` and `size` (flex-basis). It is by
+default 30px wide. When the `direction` value changes, the component will
+broadcast the event `v-panel-bar:direction` (with it's `$data.direction` value)
+to child components so they can respond to it's flex-direction.
 
-`<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and `shrink`.
+`<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and
+`shrink`.
 
 ```html
 <v-panel>
@@ -42,6 +55,42 @@ The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`
 </v-panel>
 ```
 
+###Configuration
+
+Each of the vue-panel components can be globally configured to initialize with
+additional `data` values via an object literal where the key is the property
+name and the value is the initial value. This is done by passing an object as
+the second parameter to the `Vue.use` function like so:
+
+```javascript
+Vue.use(VuePanel, {
+  // either hyphenated
+  'v-panel': {
+    class: 'Panel'
+  },
+  // or camel case:
+  'vPanelBar': {
+    class: 'Panel-bar'
+  },
+  'vPanelContent': {
+    class: 'Panel-content'
+  }
+});
+```
+
+`class` is currently the only option that has any built-in effect. The value
+from `class` will be added to the class list of each component instance. It is
+also important to note that Vue will throw a warn message for any properties
+other than `class`, since those properties wouldn't be in the component's `data`
+initializer.
+
+###Example
+
+Open `example/index.html` for a straightforward example. Not currently
+responsive.
+
 ###Tests
 
-The plugin ships with Jasmine specs in the `test` folder if installing from NPM or GitHub. `npm install` to pull down the Vue dependency, then open `test/index.html` to run the specs.
+The plugin ships with Jasmine specs in the `test` folder if installing from NPM
+or GitHub. `npm install` to pull down the Vue dependency, then open
+`test/index.html` to run the specs.
