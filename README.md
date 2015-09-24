@@ -14,6 +14,7 @@ To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or
 
 ###Use
 
+####VPanel
 `<v-panel>` responds to a variety of Flexbox parameters and is useable as both a
 `display: flex` element and a flex-item:
 
@@ -38,12 +39,14 @@ transclusion content:
 The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`
 .
 
+####VPanelBar
 `<v-panel-bar>` responds to `align-items`, `direction`, `justify` and `size`
 (flex-basis). It is by default 30px wide. When the `direction` value changes,
 the component will broadcast the event `v-panel-bar:direction` (with it's
 `$data.direction` value) to child components so they can respond to it's
 flex-direction.
 
+####VPanelContent
 `<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and
 `shrink`.
 
