@@ -1,33 +1,66 @@
 <template>
-  <div v-class="class" v-style="
-    display: 'flex',
-    flex-basis: size,
-    flex-direction: direction,
-    flex-shrink: shrink">
-    <content></content>
+  <div :class="class" :style="[_style, style]">
+    <slot></slot>
   </div>
 </template>
 
 <script>
+  var resolveAlias = require('../resolveAlias');
+
   module.exports = {
-    data: function () {
-      return {
-        direction: 'row',
-        display: 'flex',
-        shrink: 0,
-        size: '30px'
-      };
-    },
+
     props: {
-      direction: String,
-      display: String,
-      shrink: Number,
-      size: String
+      alignItems: {
+        type: String,
+        default: 'stretch'
+      },
+      direction: {
+        type: String,
+        default: 'row'
+      },
+      display: {
+        type: String,
+        default: 'flex'
+      },
+      justify: String,
+      shrink: {
+        type: String,
+        default: 0
+      },
+      size: {
+        type: String,
+        default: '30px'
+      }
     },
+
+    computed: {
+
+      parsedAlignItems: function () {
+        return resolveAlias('align-items', this.$data.alignItems);
+      },
+
+      parsedJustifyContent: function () {
+        return resolveAlias('align-items', this.$data.justify);
+      },
+
+      _style: function () {
+        return {
+          'align-items': this.parsedAlignItems,
+          'display': this.display,
+          'flex-basis': this.size,
+          'flex-direction': this.direction,
+          'flex-shrink': this.shrink,
+          'justify-content': this.parsedJustifyContent,
+        };
+      }
+
+    },
+
     watch: {
       direction: function () {
         this.$broadcast('v-panel-bar:direction', this.direction);
       }
     }
+
   };
 </script>

@@ -1,6 +1,6 @@
 describe('<v-panel-bar/>', function () {
   Vue.use(VuePanel);
-  
+
   var ctx = _.context(Vue.component('v-panel-bar'), '#panel-bar');
   var expectEqualDeferred;
 
@@ -10,7 +10,7 @@ describe('<v-panel-bar/>', function () {
   });
 
   afterEach(function () {
-    ctx.unload.bind(ctx)
+    ctx.unload.call(ctx);
   });
 
   it('is a valid Vue component', function () {

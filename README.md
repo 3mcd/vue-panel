@@ -38,10 +38,11 @@ transclusion content:
 The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`
 .
 
-`<v-panel-bar>` responds to `direction` and `size` (flex-basis). It is by
-default 30px wide. When the `direction` value changes, the component will
-broadcast the event `v-panel-bar:direction` (with it's `$data.direction` value)
-to child components so they can respond to it's flex-direction.
+`<v-panel-bar>` responds to `align-items`, `direction`, `justify` and `size`
+(flex-basis). It is by default 30px wide. When the `direction` value changes,
+the component will broadcast the event `v-panel-bar:direction` (with it's
+`$data.direction` value) to child components so they can respond to it's
+flex-direction.
 
 `<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and
 `shrink`.
@@ -66,7 +67,11 @@ the second parameter to the `Vue.use` function like so:
 Vue.use(VuePanel, {
   // either hyphenated
   'v-panel': {
-    class: 'Panel'
+    class: 'Panel',
+    style: {
+      color: 'red',
+      backgroundColor: '#ccc'
+    }
   },
   // or camel case:
   'vPanelBar': {
@@ -78,13 +83,15 @@ Vue.use(VuePanel, {
 });
 ```
 
-`class` is currently the only option that has any built-in effect. The value
-from `class` will be added to the class list of each component instance.
+`class` and `style` are currently the only options that have any built-in
+effect. The value from `class` will be merged with the class list of each
+component instance via the `v-bind:class` directive. The value(s) from `style`
+will be merged with the inline styles of each component instance via the
+`v-bind:style` directive.
 
 ###Example
 
-Open `example/index.html` for a straightforward example. Not currently
-responsive.
+Open `example/index.html` for a straightforward example.
 
 ###Tests
 

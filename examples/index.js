@@ -241,6 +241,8 @@
       }
     ];
 
+  Vue.config.debug = true;
+
   Vue.use(VuePanel, {
     'v-panel': {
       class: 'Panel'
@@ -249,7 +251,10 @@
       class: 'Panel-bar'
     },
     'vPanelContent': {
-      class: 'Panel-content'
+      class: 'Panel-content',
+      style: {
+        backgroundColor: '#ccc'
+      }
     }
   });
 

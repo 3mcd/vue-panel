@@ -1,7 +1,7 @@
 {
   "name": "vue-panel",
   "main": "index.js",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "homepage": "https://github.com/ericmcdaniel/vue-panel",
   "authors": [
     "Eric McDaniel <eric.g.mcdaniel@gmail.com>"

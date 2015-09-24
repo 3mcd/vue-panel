@@ -18,7 +18,13 @@ module.exports = {
       ;(function (config) {
         component.mixins.push({
           data: function () {
-            return config;
+            var data = {};
+            for (var prop in config) {
+              if (config.hasOwnProperty(prop)) {
+                data[prop] = config[prop];
+              }
+            }
+            return data;
           }
         });
       }(options[prop] || options[Vue.util.camelize(prop)]));

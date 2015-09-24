@@ -1,76 +1,59 @@
 <template>
-  <div v-class="class" v-style="
-    display: display,
-    align-self: parsedAlignSelf,
-    align-items: parsedAlignItems,
-    justify-content: parsedJustifyContent,
-    order: order,
-    flex: flex,
-    flex-grow: grow,
-    flex-shrink: shrink,
-    flex-basis: basis,
-    flex-direction: direction">
-    <content></content>
+  <div :class="class" :style="[_style, style]">
+    <slot></slot>
   </div>
 </template>
 
 <script>
-  var common = {
-    'flex-start': ['start'],
-    'flex-end': ['end']
-  };
-
-  var aliases = {
-    'align-items': common,
-    'align-self': common,
-    'justify-content': common
-  };
+  var resolveAlias = require('../resolveAlias');
 
   module.exports = {
-    data: function () {
-      return {
-        display: 'flex'
-      };
-    },
+
     props: {
       alignItems: String,
       alignSelf: String,
       basis: null,
       direction: String,
-      display: String,
+      display: {
+        type: String,
+        default: 'flex'
+      },
       flex: String,
-      grow: Number,
+      grow: String,
       justify: String,
-      order: Number,
-      shrink: Number
+      order: String,
+      shrink: String
     },
 
     computed: {
+
       parsedAlignSelf: function () {
-        return this.resolveAlias('align-self', this.$data.alignSelf);
+        return resolveAlias('align-self', this.$data.alignSelf);
       },
+
       parsedAlignItems: function () {
-        return this.resolveAlias('align-items', this.$data.alignItems);
+        return resolveAlias('align-items', this.$data.alignItems);
       },
+
       parsedJustifyContent: function () {
-        return this.resolveAlias('align-items', this.$data.justify);
-      }
-    },
+        return resolveAlias('align-items', this.$data.justify);
+      },
 
-    methods: {
-      resolveAlias: function (name, value) {
-        var spec = aliases[name],
-            arr, i;
-
-        for (var prop in spec) {
-          arr = spec[prop];
-          for (i = arr.length - 1; i >= 0; i--) {
-            if (value == arr[i]) return prop;
-          }
-        }
-
-        return value;
+      _style: function () {
+        return {
+          'display': this.display,
+          'align-self': this.parsedAlignSelf,
+          'align-items': this.parsedAlignItems,
+          'justify-content': this.parsedJustifyContent,
+          'order': this.order,
+          'flex': this.flex,
+          'flex-grow': this.grow,
+          'flex-shrink': this.shrink,
+          'flex-basis': this.basis,
+          'flex-direction': this.direction
+        };
       }
     }
+
   };
 </script>

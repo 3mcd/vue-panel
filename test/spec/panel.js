@@ -10,7 +10,7 @@ describe('<v-panel/>', function () {
   });
 
   afterEach(function () {
-    ctx.unload.bind(ctx)
+    ctx.unload.call(ctx);
   });
 
   it('is a valid Vue component', function () {

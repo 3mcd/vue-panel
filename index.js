@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(factory);
+		define([], factory);
 	else if(typeof exports === 'object')
 		exports["VuePanel"] = factory();
 	else
@@ -56,8 +56,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var components = {
 	  'v-panel-bar': __webpack_require__(4),
-	  'v-panel-content': __webpack_require__(7),
-	  'v-panel': __webpack_require__(10)
+	  'v-panel-content': __webpack_require__(8),
+	  'v-panel': __webpack_require__(11)
 	};
 
 	module.exports = {
@@ -74,7 +74,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      ;(function (config) {
 	        component.mixins.push({
 	          data: function () {
-	            return config;
+	            var data = {};
+	            for (var prop in config) {
+	              if (config.hasOwnProperty(prop)) {
+	                data[prop] = config[prop];
+	              }
+	            }
+	            return data;
 	          }
 	        });
 	      }(options[prop] || options[Vue.util.camelize(prop)]));
@@ -93,150 +99,222 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(5)
-	module.exports.template = __webpack_require__(6)
+	module.exports.template = __webpack_require__(7)
 
 
 /***/ },
 /* 5 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	    data: function () {
-	      return {
-	        direction: 'row',
-	        display: 'flex',
-	        shrink: 0,
-	        size: '30px'
-	      };
-	    },
+	var resolveAlias = __webpack_require__(6);
+
+	  module.exports = {
+
 	    props: {
-	      direction: String,
-	      display: String,
-	      shrink: Number,
-	      size: String
+	      alignItems: {
+	        type: String,
+	        default: 'stretch'
+	      },
+	      direction: {
+	        type: String,
+	        default: 'row'
+	      },
+	      display: {
+	        type: String,
+	        default: 'flex'
+	      },
+	      justify: String,
+	      shrink: {
+	        type: String,
+	        default: 0
+	      },
+	      size: {
+	        type: String,
+	        default: '30px'
+	      }
 	    },
+
+	    computed: {
+
+	      parsedAlignItems: function () {
+	        return resolveAlias('align-items', this.$data.alignItems);
+	      },
+
+	      parsedJustifyContent: function () {
+	        return resolveAlias('align-items', this.$data.justify);
+	      },
+
+	      _style: function () {
+	        return {
+	          'align-items': this.parsedAlignItems,
+	          'display': this.display,
+	          'flex-basis': this.size,
+	          'flex-direction': this.direction,
+	          'flex-shrink': this.shrink,
+	          'justify-content': this.parsedJustifyContent,
+	        };
+	      }
+
+	    },
+
 	    watch: {
 	      direction: function () {
 	        this.$broadcast('v-panel-bar:direction', this.direction);
 	      }
 	    }
+
 	  };
 
 /***/ },
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-class=\"class\" v-style=\"\n    display: 'flex',\n    flex-basis: size,\n    flex-direction: direction,\n    flex-shrink: shrink\">\n    <content></content>\n  </div>";
+	var common = {
+	  'flex-start': ['start'],
+	  'flex-end': ['end']
+	};
+
+	var aliases = {
+	  'align-items': common,
+	  'align-self': common,
+	  'justify-content': common
+	};
+
+	module.exports = function resolveAlias(name, value) {
+	  var spec = aliases[name],
+	      arr, i;
+
+	  for (var prop in spec) {
+	    arr = spec[prop];
+	    for (i = arr.length - 1; i >= 0; i--) {
+	      if (value == arr[i]) return prop;
+	    }
+	  }
+
+	  return value;
+	};
+
 
 /***/ },
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__(8)
-	module.exports.template = __webpack_require__(9)
-
+	module.exports = "<div :class=\"class\" :style=\"[_style, style]\">\r\n    <slot></slot>\r\n  </div>";
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	    data: function () {
-	      return {
-	        grow: 1,
-	        basis: 0
-	      };
-	    },
-	    props: {
-	      flex: String,
-	      grow: Number,
-	      shrink: Number,
-	      basis: null
-	    }
-	  };
+	module.exports = __webpack_require__(9)
+	module.exports.template = __webpack_require__(10)
+
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-class=\"class\" v-style=\"\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis\">\n    <content></content>\n  </div>";
+	module.exports = {
+
+	    props: {
+	      flex: String,
+	      grow: {
+	        type: String,
+	        default: 1
+	      },
+	      shrink: String,
+	      basis: {
+	        default: 0
+	      }
+	    },
+
+	    computed: {
+	      _style: function () {
+	        return {
+	          'flex': this.flex,
+	          'flex-grow': this.grow,
+	          'flex-shrink': this.shrink,
+	          'flex-basis': this.basis
+	        };
+	      }
+	    }
+
+	  };
 
 /***/ },
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	module.exports = __webpack_require__(11)
-	module.exports.template = __webpack_require__(12)
-
+	module.exports = "<div :class=\"class\" :style=\"[_style, style]\">\r\n    <slot></slot>\r\n  </div>";
 
 /***/ },
 /* 11 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	var common = {
-	    'flex-start': ['start'],
-	    'flex-end': ['end']
-	  };
+	module.exports = __webpack_require__(12)
+	module.exports.template = __webpack_require__(13)
 
-	  var aliases = {
-	    'align-items': common,
-	    'align-self': common,
-	    'justify-content': common
-	  };
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var resolveAlias = __webpack_require__(6);
 
 	  module.exports = {
-	    data: function () {
-	      return {
-	        display: 'flex'
-	      };
-	    },
+
 	    props: {
 	      alignItems: String,
 	      alignSelf: String,
 	      basis: null,
 	      direction: String,
-	      display: String,
+	      display: {
+	        type: String,
+	        default: 'flex'
+	      },
 	      flex: String,
-	      grow: Number,
+	      grow: String,
 	      justify: String,
-	      order: Number,
-	      shrink: Number
+	      order: String,
+	      shrink: String
 	    },
 
 	    computed: {
+
 	      parsedAlignSelf: function () {
-	        return this.resolveAlias('align-self', this.$data.alignSelf);
+	        return resolveAlias('align-self', this.$data.alignSelf);
 	      },
+
 	      parsedAlignItems: function () {
-	        return this.resolveAlias('align-items', this.$data.alignItems);
+	        return resolveAlias('align-items', this.$data.alignItems);
 	      },
+
 	      parsedJustifyContent: function () {
-	        return this.resolveAlias('align-items', this.$data.justify);
-	      }
-	    },
+	        return resolveAlias('align-items', this.$data.justify);
+	      },
 
-	    methods: {
-	      resolveAlias: function (name, value) {
-	        var spec = aliases[name],
-	            arr, i;
-
-	        for (var prop in spec) {
-	          arr = spec[prop];
-	          for (i = arr.length - 1; i >= 0; i--) {
-	            if (value == arr[i]) return prop;
-	          }
-	        }
-
-	        return value;
+	      _style: function () {
+	        return {
+	          'display': this.display,
+	          'align-self': this.parsedAlignSelf,
+	          'align-items': this.parsedAlignItems,
+	          'justify-content': this.parsedJustifyContent,
+	          'order': this.order,
+	          'flex': this.flex,
+	          'flex-grow': this.grow,
+	          'flex-shrink': this.shrink,
+	          'flex-basis': this.basis,
+	          'flex-direction': this.direction
+	        };
 	      }
 	    }
+
 	  };
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "<div v-class=\"class\" v-style=\"\n    display: display,\n    align-self: parsedAlignSelf,\n    align-items: parsedAlignItems,\n    justify-content: parsedJustifyContent,\n    order: order,\n    flex: flex,\n    flex-grow: grow,\n    flex-shrink: shrink,\n    flex-basis: basis,\n    flex-direction: direction\">\n    <content></content>\n  </div>";
+	module.exports = "<div :class=\"class\" :style=\"[_style, style]\">\r\n    <slot></slot>\r\n  </div>";
 
 /***/ }
 /******/ ])
