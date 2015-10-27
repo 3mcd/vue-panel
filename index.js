@@ -99,71 +99,92 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(5)
-	module.exports.template = __webpack_require__(7)
-
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(7)
+	if (false) {
+	(function () {
+	var hotAPI = require("vue-hot-reload-api")
+	hotAPI.install(require("vue"))
+	if (!hotAPI.compatible) return
+	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue"
+	hotAPI.createRecord(id, module.exports)
+	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-bar.vue"], function () {
+	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue")
+	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-bar.vue")
+	hotAPI.update(id, newOptions, newTemplate)
+	})
+	})()
+	}
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var resolveAlias = __webpack_require__(6);
 
-	  module.exports = {
+	module.exports = {
 
-	    props: {
-	      alignItems: {
-	        type: String,
-	        default: 'stretch'
-	      },
-	      direction: {
-	        type: String,
-	        default: 'row'
-	      },
-	      display: {
-	        type: String,
-	        default: 'flex'
-	      },
-	      justify: String,
-	      shrink: {
-	        type: String,
-	        default: 0
-	      },
-	      size: {
-	        type: String,
-	        default: '30px'
-	      }
+	  props: {
+	    alignItems: {
+	      type: String,
+	      'default': 'stretch'
+	    },
+	    direction: {
+	      type: String,
+	      'default': 'row'
+	    },
+	    display: {
+	      type: String,
+	      'default': 'flex'
+	    },
+	    justify: String,
+	    shrink: {
+	      type: String,
+	      'default': 0
+	    },
+	    size: {
+	      type: String,
+	      'default': '30px'
+	    }
+	  },
+
+	  data: function data() {
+	    return {
+	      style: {}
+	    };
+	  },
+
+	  computed: {
+
+	    parsedAlignItems: function parsedAlignItems() {
+	      return resolveAlias('align-items', this.$data.alignItems);
 	    },
 
-	    computed: {
-
-	      parsedAlignItems: function () {
-	        return resolveAlias('align-items', this.$data.alignItems);
-	      },
-
-	      parsedJustifyContent: function () {
-	        return resolveAlias('align-items', this.$data.justify);
-	      },
-
-	      _style: function () {
-	        return {
-	          'align-items': this.parsedAlignItems,
-	          'display': this.display,
-	          'flex-basis': this.size,
-	          'flex-direction': this.direction,
-	          'flex-shrink': this.shrink,
-	          'justify-content': this.parsedJustifyContent,
-	        };
-	      }
-
+	    parsedJustifyContent: function parsedJustifyContent() {
+	      return resolveAlias('align-items', this.$data.justify);
 	    },
 
-	    watch: {
-	      direction: function () {
-	        this.$broadcast('v-panel-bar:direction', this.direction);
-	      }
+	    _style: function _style() {
+	      return {
+	        'align-items': this.parsedAlignItems,
+	        'display': this.display,
+	        'flex-basis': this.size,
+	        'flex-direction': this.direction,
+	        'flex-shrink': this.shrink,
+	        'justify-content': this.parsedJustifyContent
+	      };
 	    }
 
-	  };
+	  },
+
+	  watch: {
+	    direction: function direction() {
+	      this.$broadcast('v-panel-bar:direction', this.direction);
+	    }
+	  }
+
+	};
 
 /***/ },
 /* 6 */
@@ -206,39 +227,60 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(9)
-	module.exports.template = __webpack_require__(10)
-
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(10)
+	if (false) {
+	(function () {
+	var hotAPI = require("vue-hot-reload-api")
+	hotAPI.install(require("vue"))
+	if (!hotAPI.compatible) return
+	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue"
+	hotAPI.createRecord(id, module.exports)
+	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-content.vue"], function () {
+	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue")
+	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-content.vue")
+	hotAPI.update(id, newOptions, newTemplate)
+	})
+	})()
+	}
 
 /***/ },
 /* 9 */
 /***/ function(module, exports) {
 
+	'use strict';
+
 	module.exports = {
 
-	    props: {
-	      flex: String,
-	      grow: {
-	        type: String,
-	        default: 1
-	      },
-	      shrink: String,
-	      basis: {
-	        default: 0
-	      }
+	  props: {
+	    flex: String,
+	    grow: {
+	      type: String,
+	      'default': 1
 	    },
-
-	    computed: {
-	      _style: function () {
-	        return {
-	          'flex': this.flex,
-	          'flex-grow': this.grow,
-	          'flex-shrink': this.shrink,
-	          'flex-basis': this.basis
-	        };
-	      }
+	    shrink: String,
+	    basis: {
+	      'default': 0
 	    }
+	  },
 
-	  };
+	  data: function data() {
+	    return {
+	      style: {}
+	    };
+	  },
+
+	  computed: {
+	    _style: function _style() {
+	      return {
+	        'flex': this.flex,
+	        'flex-grow': this.grow,
+	        'flex-shrink': this.shrink,
+	        'flex-basis': this.basis
+	      };
+	    }
+	  }
+
+	};
 
 /***/ },
 /* 10 */
@@ -251,64 +293,85 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(12)
-	module.exports.template = __webpack_require__(13)
-
+	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(13)
+	if (false) {
+	(function () {
+	var hotAPI = require("vue-hot-reload-api")
+	hotAPI.install(require("vue"))
+	if (!hotAPI.compatible) return
+	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue"
+	hotAPI.createRecord(id, module.exports)
+	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel.vue"], function () {
+	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue")
+	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel.vue")
+	hotAPI.update(id, newOptions, newTemplate)
+	})
+	})()
+	}
 
 /***/ },
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	var resolveAlias = __webpack_require__(6);
 
-	  module.exports = {
+	module.exports = {
 
-	    props: {
-	      alignItems: String,
-	      alignSelf: String,
-	      basis: null,
-	      direction: String,
-	      display: {
-	        type: String,
-	        default: 'flex'
-	      },
-	      flex: String,
-	      grow: String,
-	      justify: String,
-	      order: String,
-	      shrink: String
+	  props: {
+	    alignItems: String,
+	    alignSelf: String,
+	    basis: null,
+	    direction: String,
+	    display: {
+	      type: String,
+	      'default': 'flex'
+	    },
+	    flex: String,
+	    grow: String,
+	    justify: String,
+	    order: String,
+	    shrink: String
+	  },
+
+	  data: function data() {
+	    return {
+	      style: {}
+	    };
+	  },
+
+	  computed: {
+
+	    parsedAlignSelf: function parsedAlignSelf() {
+	      return resolveAlias('align-self', this.$data.alignSelf);
 	    },
 
-	    computed: {
+	    parsedAlignItems: function parsedAlignItems() {
+	      return resolveAlias('align-items', this.$data.alignItems);
+	    },
 
-	      parsedAlignSelf: function () {
-	        return resolveAlias('align-self', this.$data.alignSelf);
-	      },
+	    parsedJustifyContent: function parsedJustifyContent() {
+	      return resolveAlias('align-items', this.$data.justify);
+	    },
 
-	      parsedAlignItems: function () {
-	        return resolveAlias('align-items', this.$data.alignItems);
-	      },
-
-	      parsedJustifyContent: function () {
-	        return resolveAlias('align-items', this.$data.justify);
-	      },
-
-	      _style: function () {
-	        return {
-	          'display': this.display,
-	          'align-self': this.parsedAlignSelf,
-	          'align-items': this.parsedAlignItems,
-	          'justify-content': this.parsedJustifyContent,
-	          'order': this.order,
-	          'flex': this.flex,
-	          'flex-grow': this.grow,
-	          'flex-shrink': this.shrink,
-	          'flex-basis': this.basis,
-	          'flex-direction': this.direction
-	        };
-	      }
+	    _style: function _style() {
+	      return {
+	        'display': this.display,
+	        'align-self': this.parsedAlignSelf,
+	        'align-items': this.parsedAlignItems,
+	        'justify-content': this.parsedJustifyContent,
+	        'order': this.order,
+	        'flex': this.flex,
+	        'flex-grow': this.grow,
+	        'flex-shrink': this.shrink,
+	        'flex-basis': this.basis,
+	        'flex-direction': this.direction
+	      };
 	    }
+	  }
 
-	  };
+	};
 
 /***/ },
 /* 13 */

@@ -25,6 +25,12 @@
       shrink: String
     },
 
+    data: function () {
+      return {
+        style: {}
+      }
+    },
+
     computed: {
 
       parsedAlignSelf: function () {

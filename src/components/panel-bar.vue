@@ -33,6 +33,12 @@
       }
     },
 
+    data: function () {
+      return {
+        style: {}
+      }
+    },
+
     computed: {
 
       parsedAlignItems: function () {

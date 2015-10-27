@@ -19,6 +19,12 @@
       }
     },
 
+    data: function () {
+      return {
+        style: {}
+      }
+    },
+
     computed: {
       _style: function () {
         return {
