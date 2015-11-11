@@ -60,34 +60,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	  'v-panel': __webpack_require__(11)
 	};
 
+	var modules = [
+	  {
+	    name: 'v-panel-bar',
+	    module: __webpack_require__(4)
+	  },
+	  {
+	    name: 'v-panel-content',
+	    module: __webpack_require__(8)
+	  },
+	  {
+	    name: 'v-panel',
+	    module: __webpack_require__(11)
+	  }
+	];
+
 	module.exports = {
+
 	  install: function (Vue, options) {
 	    var component;
 
 	    options = options || {};
 
-	    for (var prop in components) {
-	      component = components[prop];
+	    modules.forEach(function (spec) {
+	      var component = spec.module;
 
 	      component.mixins = component.mixins || [];
 
-	      ;(function (config) {
-	        component.mixins.push({
-	          data: function () {
-	            var data = {};
-	            for (var prop in config) {
-	              if (config.hasOwnProperty(prop)) {
-	                data[prop] = config[prop];
-	              }
-	            }
-	            return data;
-	          }
-	        });
-	      }(options[prop] || options[Vue.util.camelize(prop)]));
+	      component.mixins.push({
+	        data: function () {
+	          return Object.assign({}, options[spec.name] || options[Vue.util.camelize(spec.name)]);
+	        }
+	      });
 
-	      Vue.component(prop, component);
-	    }
+	      Vue.component(spec.name, component);
+	    });
 	  }
+
 	};
 
 
@@ -99,16 +108,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(5)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(7)
 	if (false) {
 	(function () {
 	var hotAPI = require("vue-hot-reload-api")
 	hotAPI.install(require("vue"))
 	if (!hotAPI.compatible) return
-	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue"
+	var id = "-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue"
 	hotAPI.createRecord(id, module.exports)
-	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-bar.vue"], function () {
-	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue")
+	module.hot.accept(["-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-bar.vue"], function () {
+	var newOptions = require("-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-bar.vue")
+	if (newOptions && newOptions.__esModule) newOptions = newOptions.default
 	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-bar.vue")
 	hotAPI.update(id, newOptions, newTemplate)
 	})
@@ -128,24 +140,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  props: {
 	    alignItems: {
 	      type: String,
-	      'default': 'stretch'
+	      default: 'stretch'
 	    },
 	    direction: {
 	      type: String,
-	      'default': 'row'
+	      default: 'row'
 	    },
 	    display: {
 	      type: String,
-	      'default': 'flex'
+	      default: 'flex'
 	    },
 	    justify: String,
 	    shrink: {
 	      type: String,
-	      'default': 0
+	      default: 0
 	    },
 	    size: {
 	      type: String,
-	      'default': '30px'
+	      default: '30px'
 	    }
 	  },
 
@@ -227,16 +239,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(9)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(10)
 	if (false) {
 	(function () {
 	var hotAPI = require("vue-hot-reload-api")
 	hotAPI.install(require("vue"))
 	if (!hotAPI.compatible) return
-	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue"
+	var id = "-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue"
 	hotAPI.createRecord(id, module.exports)
-	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-content.vue"], function () {
-	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue")
+	module.hot.accept(["-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-content.vue"], function () {
+	var newOptions = require("-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel-content.vue")
+	if (newOptions && newOptions.__esModule) newOptions = newOptions.default
 	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel-content.vue")
 	hotAPI.update(id, newOptions, newTemplate)
 	})
@@ -255,11 +270,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    flex: String,
 	    grow: {
 	      type: String,
-	      'default': 1
+	      default: 1
 	    },
 	    shrink: String,
 	    basis: {
-	      'default': 0
+	      default: 0
 	    }
 	  },
 
@@ -293,16 +308,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(12)
+
+	if (module.exports.__esModule) module.exports = module.exports.default
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(13)
 	if (false) {
 	(function () {
 	var hotAPI = require("vue-hot-reload-api")
 	hotAPI.install(require("vue"))
 	if (!hotAPI.compatible) return
-	var id = "-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue"
+	var id = "-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue"
 	hotAPI.createRecord(id, module.exports)
-	module.hot.accept(["-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel.vue"], function () {
-	var newOptions = require("-!babel?optional[]=runtime&loose=all&nonStandard=false!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue")
+	module.hot.accept(["-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue","-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel.vue"], function () {
+	var newOptions = require("-!babel?presets[]=es2015&plugins[]=transform-runtime!./../../node_modules/vue-loader/lib/selector.js?type=script&index=0!./panel.vue")
+	if (newOptions && newOptions.__esModule) newOptions = newOptions.default
 	var newTemplate = require("-!vue-html!./../../node_modules/vue-loader/lib/selector.js?type=template&index=0!./panel.vue")
 	hotAPI.update(id, newOptions, newTemplate)
 	})
@@ -326,7 +344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    direction: String,
 	    display: {
 	      type: String,
-	      'default': 'flex'
+	      default: 'flex'
 	    },
 	    flex: String,
 	    grow: String,
