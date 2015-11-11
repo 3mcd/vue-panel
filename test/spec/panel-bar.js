@@ -47,7 +47,8 @@ describe('<v-panel-bar/>', function () {
     it('broadcasts an event to child components when `$data.direction` changes', function (done) {
       var result;
 
-      ctx.component.$addChild({
+      var child = new Vue({
+        parent: ctx.component,
         events: {
           'v-panel-bar:direction': function (value) {
             result = value;
