@@ -16,7 +16,7 @@ var propertyAliases = {
   'align-items': ['alignItems'],
   'align-self': ['alignSelf'],
   'flex-direction': ['direction']
-}
+};
 
 function resolvePropertyAlias(name) {
   for (var prop in propertyAliases) {
