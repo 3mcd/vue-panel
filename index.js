@@ -209,9 +209,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  'flex-grow': ['grow'],
 	  'flex-shrink': ['shrink'],
 	  'flex-basis': ['basis', 'size'],
-	  'align-items': ['align', 'alignItems'],
-	  'flex-direction': ['direction']
-	}
+	  'align-items': ['alignItems'],
+	  'align-self': ['alignSelf'],
+	  'flex-direction': ['direction'],
+	  'justify-content': ['justify']
+	};
 
 	function resolvePropertyAlias(name) {
 	  for (var prop in propertyAliases) {
