@@ -13,7 +13,8 @@ var propertyAliases = {
   'flex-grow': ['grow'],
   'flex-shrink': ['shrink'],
   'flex-basis': ['basis', 'size'],
-  'align-items': ['align', 'alignItems'],
+  'align-items': ['alignItems'],
+  'align-self': ['alignSelf'],
   'flex-direction': ['direction']
 }
 
