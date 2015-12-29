@@ -1,16 +1,33 @@
-var common = {
+var commonValueAliases = {
   'flex-start': ['start'],
   'flex-end': ['end']
 };
 
-var aliases = {
-  'align-items': common,
-  'align-self': common,
-  'justify-content': common
+var valueAliases = {
+  'align-items': commonValueAliases,
+  'align-self': commonValueAliases,
+  'justify-content': commonValueAliases
 };
 
-module.exports = function resolveAlias(name, value) {
-  var spec = aliases[name],
+var propertyAliases = {
+  'flex-grow': ['grow'],
+  'flex-shrink': ['shrink'],
+  'flex-basis': ['basis', 'size'],
+  'align-items': ['align', 'alignItems'],
+  'flex-direction': ['direction']
+}
+
+function resolvePropertyAlias(name) {
+  for (var prop in propertyAliases) {
+    if (propertyAliases[prop].indexOf(name) > -1) {
+      return prop;
+    }
+  }
+  return name;
+}
+
+function resolveValueAlias(name, value) {
+  var spec = valueAliases[name],
       arr, i;
 
   for (var prop in spec) {
@@ -21,4 +38,9 @@ module.exports = function resolveAlias(name, value) {
   }
 
   return value;
+};
+
+module.exports = {
+  property: resolvePropertyAlias,
+  value: resolveValueAlias
 };

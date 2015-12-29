@@ -5,33 +5,12 @@
 </template>
 
 <script>
-  var resolveAlias = require('../resolveAlias');
+  var resolveValue = require('../resolveAlias').value,
+      spec = require('../const/panel-bar');
 
   module.exports = {
 
-    props: {
-      alignItems: {
-        type: String,
-        default: 'stretch'
-      },
-      direction: {
-        type: String,
-        default: 'row'
-      },
-      display: {
-        type: String,
-        default: 'flex'
-      },
-      justify: String,
-      shrink: {
-        type: String,
-        default: 0
-      },
-      size: {
-        type: String,
-        default: '30px'
-      }
-    },
+    props: spec.props,
 
     data: function () {
       return {
@@ -42,11 +21,11 @@
     computed: {
 
       parsedAlignItems: function () {
-        return resolveAlias('align-items', this.$data.alignItems);
+        return resolveValue('align-items', this.$data.alignItems);
       },
 
       parsedJustifyContent: function () {
-        return resolveAlias('align-items', this.$data.justify);
+        return resolveValue('align-items', this.$data.justify);
       },
 
       _style: function () {

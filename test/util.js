@@ -1,6 +1,6 @@
 window._ = {
-  context: function (component, stage) {
-    return new TestContext(component, stage);
+  context: function (obj, stage) {
+    return new TestContext(obj, stage);
   },
 
   makeExpectEqualDeferred: function expectEqualBuilder(expect, obj) {
@@ -28,20 +28,27 @@ window._ = {
   }
 };
 
-var TestContext = function (component, stage) {
-  this.Ctor = component instanceof Function ? component : Vue.component(component);
+var TestContext = function (spec, stage) {
+  this.spec = spec;
   this.$stage = document.querySelector(stage);
-  this.reload();
+  this.reload.bind(this);
+  this.unload.bind(this);
+  this.reload(); 
 };
 
-TestContext.prototype.reload = function () {
+TestContext.prototype.reload = function (spec) {
+  this.spec = spec || this.spec;
+
   this.$main = this.$stage.appendChild(document.createElement('div'));
-  this.component = new this.Ctor({ el: this.$main });
+  this.component = this.spec instanceof Function ?
+    new this.spec({ el: this.$main }) :
+    new Vue({ el: this.$main, template: '<div ' + this.spec + '></div>' });
   this.style = this.component.$el.style;
 };
 
 TestContext.prototype.unload = function () {
-  if (!this.component)
+  this.$stage.innerHTML = '';
+  if (!this.component || !this.component.$el)
     return;
   this.component.$remove();
   this.component.$destroy();

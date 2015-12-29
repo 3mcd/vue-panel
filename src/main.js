@@ -1,23 +1,5 @@
-var components = {
-  'v-panel-bar': require('./components/panel-bar.vue'),
-  'v-panel-content': require('./components/panel-content.vue'),
-  'v-panel': require('./components/panel.vue')
-};
-
-var modules = [
-  {
-    name: 'v-panel-bar',
-    module: require('./components/panel-bar.vue')
-  },
-  {
-    name: 'v-panel-content',
-    module: require('./components/panel-content.vue')
-  },
-  {
-    name: 'v-panel',
-    module: require('./components/panel.vue')
-  }
-];
+var components = require('./components'),
+    directives = require('./directives');
 
 module.exports = {
 
@@ -26,7 +8,7 @@ module.exports = {
 
     options = options || {};
 
-    modules.forEach(function (spec) {
+    components.forEach(function (spec) {
       var component = spec.module;
 
       component.mixins = component.mixins || [];
@@ -38,6 +20,10 @@ module.exports = {
       });
 
       Vue.component(spec.name, component);
+    });
+
+    directives.forEach(function (spec) {
+      Vue.directive(spec.name, spec.module);
     });
   }
 
