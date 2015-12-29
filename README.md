@@ -120,7 +120,7 @@ component instance via the `v-bind:class` directive. The value(s) from `style`
 will be merged with the inline styles of each component instance via the
 `v-bind:style` directive.
 
-> Note: This feature does not work with the bundled directives. Directives are designed to provide the bare-minimum Flexbox structure that you can integrate with any component or element.
+> Note: This feature does not work with the bundled directives. Directives are designed to provide the bare-minimum Flexbox parameters that you can integrate with any component or element.
 
 ###Example
 
