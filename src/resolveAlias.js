@@ -15,7 +15,8 @@ var propertyAliases = {
   'flex-basis': ['basis', 'size'],
   'align-items': ['alignItems'],
   'align-self': ['alignSelf'],
-  'flex-direction': ['direction']
+  'flex-direction': ['direction'],
+  'justify-content': ['justify']
 };
 
 function resolvePropertyAlias(name) {
