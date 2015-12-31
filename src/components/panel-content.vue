@@ -5,19 +5,11 @@
 </template>
 
 <script>
+  var spec = require('../const/panel-content');
+
   module.exports = {
 
-    props: {
-      flex: String,
-      grow: {
-        type: String,
-        default: 1
-      },
-      shrink: String,
-      basis: {
-        default: 0
-      }
-    },
+    props: spec.props,
 
     data: function () {
       return {

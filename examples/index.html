@@ -7,19 +7,20 @@
   </head>
   <body>
     <div id="app">
-      <v-panel-bar direction="column" size="60px">
+      <div v-panel-bar direction="column" v-bind:size="someWidth">
         <div class="Button">A</div>
         <div class="Button">B</div>
         <div class="Button">C</div>
         <div class="Button">D</div>
         <div class="Button">E</div>
-      </v-panel-bar>
-      <v-panel direction="row" grow="2">
-        <v-panel-content class="Panel-content--main" style="position: relative;">
+      </div>
+      <div v-panel direction="row" grow="2">
+        <div v-panel-content class="Panel-content--main" style="position: relative;">
           <video autoplay loop class="BgVid">
             <source src="https://archive.org/download/CEP366/CEP366_512kb.mp4" type="video/mp4">
           </video>
-      </v-panel>
+        </div>
+      </div>
       <v-panel-bar direction="column" size="60px" justify="end">
         <div class="Button">A</div>
         <div class="Button">B</div>

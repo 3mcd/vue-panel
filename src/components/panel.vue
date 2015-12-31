@@ -5,25 +5,12 @@
 </template>
 
 <script>
-  var resolveAlias = require('../resolveAlias');
+  var resolveValue = require('../resolveAlias').value,
+      spec = require('../const/panel');
 
   module.exports = {
 
-    props: {
-      alignItems: String,
-      alignSelf: String,
-      basis: null,
-      direction: String,
-      display: {
-        type: String,
-        default: 'flex'
-      },
-      flex: String,
-      grow: String,
-      justify: String,
-      order: String,
-      shrink: String
-    },
+    props: spec.props,
 
     data: function () {
       return {
@@ -34,15 +21,15 @@
     computed: {
 
       parsedAlignSelf: function () {
-        return resolveAlias('align-self', this.$data.alignSelf);
+        return resolveValue('align-self', this.$data.alignSelf);
       },
 
       parsedAlignItems: function () {
-        return resolveAlias('align-items', this.$data.alignItems);
+        return resolveValue('align-items', this.$data.alignItems);
       },
 
       parsedJustifyContent: function () {
-        return resolveAlias('align-items', this.$data.justify);
+        return resolveValue('align-items', this.$data.justify);
       },
 
       _style: function () {

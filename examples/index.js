@@ -261,7 +261,8 @@
   var app = new Vue({
     el: '#app',
     data: {
-      states: states
+      states: states,
+      someWidth: '40px'
     }
   });
 

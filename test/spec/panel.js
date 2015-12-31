@@ -9,9 +9,7 @@ describe('<v-panel/>', function () {
     expectEqualDeferred = _.makeExpectEqualDeferred(expect, ctx.style);
   });
 
-  afterEach(function () {
-    ctx.unload.call(ctx);
-  });
+  afterEach(function () { ctx.unload(); });
 
   it('is a valid Vue component', function () {
     expect(typeof ctx.component).toBe('object');
