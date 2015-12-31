@@ -10,7 +10,7 @@ module.exports = [
     module: directive(require('../const/panel-bar'))
   },
   {
-  	name: 'panel-content',
-  	module: directive(require('../const/panel-content'))
+    name: 'panel-content',
+    module: directive(require('../const/panel-content'))
   }
 ];
