@@ -1,7 +1,7 @@
 var resolveAlias = require('../resolveAlias');
 
-var spec = {		
-	props: {
+var spec = {    
+  props: {
     alignItems: {
       type: String,
       default: 'stretch'
@@ -23,15 +23,15 @@ var spec = {
       type: String,
       default: '30px'
     }
-	}
+  }
 };
 
 spec.params = Object.keys(spec.props);
 spec.defaults = spec.params.reduce(function (a, x) {
-	var def = spec.props[x].default;
-	if (def)
-		a[x] = def;	
-	return a;
+  var def = spec.props[x].default;
+  if (def)
+    a[x] = def; 
+  return a;
 }, {});
 
 module.exports = spec;
