@@ -1,9 +1,9 @@
-#vue-panel
+# vue-panel
 
 This plugin aims to provide your [Vue](http://vuejs.org/) application with a
 handful of light, composable, Flexbox-powered components.
 
-###Installation
+### Installation
 
 Just `bower` or `npm install ericmcdaniel/vue-panel`. The package is exposed as
 a UMD module so you can require it with Browserify/Webpack/etc. or include it in
@@ -12,9 +12,9 @@ your page via script tag.
 To use this plugin with Vue, simply call `Vue.use(require('vue-panel'))`, or
 `Vue.use(window.VuePanel)` if including in a script tag.
 
-###Components
+### Components
 
-####VPanel
+#### VPanel
 `<v-panel>` responds to a variety of Flexbox parameters and is useable as both a
 `display: flex` element and a flex-item:
 
@@ -45,7 +45,7 @@ transclusion content:
 
 The plugin provides two more components: `<v-panel-bar>` and `<v-panel-content>`.
 
-####VPanelBar
+#### VPanelBar
 `<v-panel-bar>` responds to
 * `align-items`,
 * `direction`,
@@ -57,7 +57,7 @@ the component will broadcast the event `v-panel-bar:direction` (with it's
 `$data.direction` value) to child components so they can respond to it's
 flex-direction.
 
-####VPanelContent
+#### VPanelContent
 `<v-panel-content>` is a simple flex-item that responds to `flex`, `grow` and
 `shrink`.
 
@@ -70,7 +70,7 @@ flex-direction.
 </v-panel>
 ```
 
-###Directives
+### Directives
 
 Each of the included components are also provided as directives. These directives can take parameters in the form of attributes, not to be confused with component props. These params follow the same naming conventions as the props documented above.
 
@@ -87,7 +87,7 @@ The directives share common defaults with the components, but you will have to m
 <my-nav v-panel-bar v-bind:size="myBarSize"></my-component>
 ```
 
-###Configuration
+### Configuration
 
 Each of the vue-panel _components_ can be globally configured to initialize with
 additional `data` values via an object literal where the key is the property
@@ -122,11 +122,11 @@ will be merged with the inline styles of each component instance via the
 
 > Note: This feature does not work with the bundled directives. Directives are designed to provide the bare-minimum Flexbox parameters that you can integrate with any component or element.
 
-###Example
+### Example
 
 Open `example/index.html` for a straightforward example.
 
-###Tests
+### Tests
 
 The plugin ships with Jasmine specs in the `test` folder if installing from NPM
 or GitHub. `npm install` to pull down the Vue dependency, then open
