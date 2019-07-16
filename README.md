@@ -1,5 +1,7 @@
 # vue-panel
 
+> Note: This project is no longer maintained.
+
 This plugin aims to provide your [Vue](http://vuejs.org/) application with a
 handful of light, composable, Flexbox-powered components.
 
